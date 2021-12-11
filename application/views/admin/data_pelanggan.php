@@ -9,19 +9,21 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 align="center" class="card-title">Data Admin</h5>
+              <h5 align="center" class="card-title">Data Pelanggan</h5>
 
               <?= $this->session->flashdata('msg') ?>
               <?php echo form_open('C_admin/admin_tambah'); ?>
 
-              <button style="margin-bottom: 30px; margin-top: 30px" type="button" class="btn btn-primary btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#largeModal">Tambah Admin</button>
+              <!-- <button style="margin-bottom: 30px; margin-top: 30px" type="button" class="btn btn-primary btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#largeModal">Tambah Admin</button> -->
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th >No</th>
+                    <th>No</th>
                     <th>Username</th>
+                    <th>Nama Lengkap</th>
+                    <th>Nama Club</th>
                     <th>Status</th>
                     <th>Aksi</th>
                   </tr>
@@ -35,12 +37,15 @@
                   <tr>
                     <td><?= $no++ ?></td>
                     <td><?= $row->username ?></td>
+                    <td><?= $row->nama_lengkap ?></td>
+                    <td><?= $row->nama_club ?></td>
                     <td><?= $row->status ?></td>
                     <td>
-                      <a href="<?php echo site_url('C_admin/admin_hapus/'.$row->id_admin); ?>" class="btn btn-sm btn-danger rounded-pill"
+                      <a href="<?php echo site_url('C_admin/pelanggan_hapus/'.$row->id_pelanggan); ?>" class="btn btn-sm btn-danger rounded-pill"
                         onclick="return confirm('Anda yakin menghapus data <?= $row->username ?> ?')">Hapus</a>
-                      <a href="<?php echo site_url('C_admin/admin_edit/'.$row->id_admin); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a>
-                      <a href="<?php echo site_url('C_admin/admin_pass/'.$row->id_admin); ?>" class="btn btn-sm btn-secondary rounded-pill">Reset Password</a>
+                      <a href="<?php echo site_url('C_admin/pelanggan_edit/'.$row->id_pelanggan); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a>
+                      <a href="<?php echo site_url('C_admin/pelanggan_pass/'.$row->id_pelanggan); ?>" class="btn btn-sm btn-secondary rounded-pill">Password</a>
+                      <a href="<?php echo site_url('C_admin/pelanggan_detail/'.$row->id_pelanggan); ?>" class="btn btn-sm btn-primary rounded-pill">Detail</a>
 
                     </td>
                   <?php } ?>

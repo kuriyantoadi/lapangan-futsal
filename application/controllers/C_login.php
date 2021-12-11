@@ -35,28 +35,38 @@ class C_login extends CI_Controller {
     if ($cek_login->num_rows() > 0) {
       $data = $cek_login->row_array();
 
-      if ($data['status']=='user') {
-        $this->session->set_userdata('user', true);
-        $this->session->set_userdata('ses_id', $data['id_user']);
+      if ($data['status']=='aktif') {
+        $this->session->set_userdata('aktif', true);
+        $this->session->set_userdata('ses_id', $data['id_pelanggan']);
         $this->session->set_userdata('ses_username', $data['username']);
         redirect('C_user/dashboard');
 
       }elseif ($data['status']=='pimpinan') {
         $this->session->set_userdata('pimpinan', true);
-        $this->session->set_userdata('ses_id', $data['id_user']);
+        $this->session->set_userdata('ses_id', $data['id_pelanggan']);
         $this->session->set_userdata('ses_username', $data['username']);
 
         redirect('C_pimpinan/dashboard');
       }else {
-        $url = base_url('C_user');
-        echo $this->session->set_flashdata('msg', 'Username atau password salah');
+        $url = base_url('C_login');
+        echo $this->session->set_flashdata('msg', '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        Username atau Password Salah!
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        ');
         redirect($url);
       }
 
     }
 
-    $this->session->set_flashdata('msg', 'Username atau password salah');
-    $url = base_url('C_user/index');
+    $this->session->set_flashdata('msg', '
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    Username atau Password Salah!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    ');
+    $url = base_url('C_login/index');
     redirect($url);
   }
 
@@ -87,8 +97,7 @@ class C_login extends CI_Controller {
       }else {
         $url = base_url('Admin');
         echo $this->session->set_flashdata('msg', 'Username atau password salah');
-        // redirect($url);
-        echo "string";
+        redirect($url);
       }
 
     }

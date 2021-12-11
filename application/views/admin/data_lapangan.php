@@ -9,20 +9,21 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 align="center" class="card-title">Data Admin</h5>
+              <h5 align="center" class="card-title">Data Lapangan</h5>
 
               <?= $this->session->flashdata('msg') ?>
-              <?php echo form_open('C_admin/admin_tambah'); ?>
+              <?php echo form_open('C_admin/lapangan_tambah'); ?>
 
-              <button style="margin-bottom: 30px; margin-top: 30px" type="button" class="btn btn-primary btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#largeModal">Tambah Admin</button>
+              <button style="margin-bottom: 30px; margin-top: 30px" type="button" class="btn btn-primary btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#largeModal">Tambah</button>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th >No</th>
-                    <th>Username</th>
-                    <th>Status</th>
+                    <th>No</th>
+                    <th>Nama Lapangan</th>
+                    <th>Harga Sewa</th>
+                    <th>Kondisi</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -34,13 +35,13 @@
 
                   <tr>
                     <td><?= $no++ ?></td>
-                    <td><?= $row->username ?></td>
-                    <td><?= $row->status ?></td>
+                    <td><?= $row->nama_lapangan ?></td>
+                    <td><?= $row->harga_sewa ?></td>
+                    <td><?= $row->kondisi ?></td>
                     <td>
-                      <a href="<?php echo site_url('C_admin/admin_hapus/'.$row->id_admin); ?>" class="btn btn-sm btn-danger rounded-pill"
-                        onclick="return confirm('Anda yakin menghapus data <?= $row->username ?> ?')">Hapus</a>
-                      <a href="<?php echo site_url('C_admin/admin_edit/'.$row->id_admin); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a>
-                      <a href="<?php echo site_url('C_admin/admin_pass/'.$row->id_admin); ?>" class="btn btn-sm btn-secondary rounded-pill">Reset Password</a>
+                      <a href="<?php echo site_url('C_admin/lapangan_hapus/'.$row->id_lapangan); ?>" class="btn btn-sm btn-danger rounded-pill"
+                        onclick="return confirm('Anda yakin menghapus data <?= $row->id_lapangan ?> ?')">Hapus</a>
+                      <a href="<?php echo site_url('C_admin/lapangan_edit/'.$row->id_lapangan); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a>
 
                     </td>
                   <?php } ?>
@@ -61,28 +62,28 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Tambah Admin</h5>
+            <h5 class="modal-title">Tambah Lapangan</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="row mb-3">
-              <label for="inputEmail" class="col-sm-2 col-form-label">Username</label>
+              <label for="inputEmail" class="col-sm-2 col-form-label">Nama Lapangan</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="username" value="" placeholder="">
+                <input type="text" class="form-control" name="nama_lapangan" value="" placeholder="">
               </div>
             </div>
             <div class="row mb-3">
-              <label for="inputEmail" class="col-sm-2 col-form-label">Password</label>
+              <label for="inputEmail" class="col-sm-2 col-form-label">Harga</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="password" value="" placeholder="">
+                <input type="text" class="form-control" name="harga_sewa" value="" placeholder="">
               </div>
             </div>
             <div class="row mb-3">
-              <label for="inputEmail" class="col-sm-2 col-form-label">Status</label>
+              <label for="inputEmail" class="col-sm-2 col-form-label">Kondisi</label>
               <div class="col-sm-10">
-                <select class="form-control" name="status">
-                  <option value="Admin">Admin</option>
-                  <option value="Tidak Aktif">Tidak Aktif</option>
+                <select class="form-control" name="kondisi">
+                  <option value="Baik">Baik</option>
+                  <option value="Tidak Baik">Tidak Baik</option>
                 </select>
               </div>
             </div>

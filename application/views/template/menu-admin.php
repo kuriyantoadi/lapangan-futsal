@@ -21,10 +21,6 @@
           </a>
         </li><!-- End Search Icon-->
 
-
-
-
-
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
@@ -98,12 +94,6 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
-      <!-- <div class="icon">
-        <i class="bi bi-alarm-fill"></i>
-        <div class="label">alarm-fill</div>
-      </div> -->
-
-
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.html">
           <i class="bi bi-cart-check"></i>
@@ -111,8 +101,16 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
+
       <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
+        <a class="nav-link collapsed" href="<?= base_url() ?>C_admin/data_lapangan">
+          <i class="bi bi-clipboard-check"></i>
+          <span>Data Lapangan</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= base_url() ?>C_admin/data_pelanggan">
           <i class="bi bi-people"></i>
           <span>Data Pelanggan</span>
         </a>

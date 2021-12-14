@@ -298,4 +298,95 @@ class C_admin extends CI_Controller {
 		redirect ('C_admin/data_lapangan');
 	}
 
+
+	public function lapangan_edit($id_lapangan)
+	{
+		$data['cari_lapangan'] = $this->M_admin->cari_lapangan($id_lapangan);
+
+		$this->load->view('template/header');
+		$this->load->view('template/menu-admin');
+		$this->load->view('admin/lapangan_edit', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function lapangan_hapus_photo1($id_lapangan)
+	{
+		$_id = $this->db->get_where('tb_lapangan',['id_lapangan' => $id_lapangan])->row();
+
+		$data_edit = array(
+			'photo_1' => ''
+		);
+
+		$this->M_admin->lapangan_hapus_photo($id_lapangan, $data_edit);
+
+		unlink('assets/photo_lapangan/'.$_id->photo_1);
+		redirect('C_admin/lapangan_edit/'.$id_lapangan);
+	}
+
+	public function lapangan_hapus_photo2($id_lapangan)
+	{
+		$_id = $this->db->get_where('tb_lapangan',['id_lapangan' => $id_lapangan])->row();
+
+		$data_edit = array(
+			'photo_2' => ''
+		);
+
+		$this->M_admin->lapangan_hapus_photo($id_lapangan, $data_edit);
+
+		unlink('assets/photo_lapangan/'.$_id->photo_2);
+		redirect('C_admin/lapangan_edit/'.$id_lapangan);
+	}
+
+	public function lapangan_hapus_photo3($id_lapangan)
+	{
+		$_id = $this->db->get_where('tb_lapangan',['id_lapangan' => $id_lapangan])->row();
+
+		$data_edit = array(
+			'photo_3' => ''
+		);
+
+		$this->M_admin->lapangan_hapus_photo($id_lapangan, $data_edit);
+
+		unlink('assets/photo_lapangan/'.$_id->photo_3);
+		redirect('C_admin/lapangan_edit/'.$id_lapangan);
+	}
+
+	public function upload_berkas()
+	{
+			$config['upload_path'] = 'assets/photo_lapangan';
+			$config['allowed_types'] = 'pdf';
+			$config['max_size'] = 2000;
+			$config['encrypt_name']	= TRUE;
+
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('photo_1')) {
+				$error = array('error' => $this->upload->display_errors());
+
+
+				print_r ($error);
+				redirect('C_lapangan');
+
+			}else {
+				$_data = array('upload_data' => $this->upload->data());
+				$tgl_upload = date('d-m-Y  H:i');
+
+				$data = array(
+					'nama_lapangan' => $nama_lapangan,
+					'harga_sewa' => $harga_sewa,
+					'kondisi' => $kondisi,
+					'photo_1'=> $_data['upload_data']['file_name']
+				);
+				$query = $this->db->insert('tb_pembelajaran', $data);
+
+				if ($query) {
+					echo 'berhasil diupload';
+					redirect('C_file');
+				}else {
+					echo 'gagal upload';
+				}
+			}
+
+	}
+
+
 }

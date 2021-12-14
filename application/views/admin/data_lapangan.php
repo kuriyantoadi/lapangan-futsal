@@ -42,6 +42,7 @@
                       <a href="<?php echo site_url('C_admin/lapangan_hapus/'.$row->id_lapangan); ?>" class="btn btn-sm btn-danger rounded-pill"
                         onclick="return confirm('Anda yakin menghapus data <?= $row->id_lapangan ?> ?')">Hapus</a>
                       <a href="<?php echo site_url('C_admin/lapangan_edit/'.$row->id_lapangan); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a>
+                      <a href="<?php echo site_url('C_admin/lapangan_detail/'.$row->id_lapangan); ?>" class="btn btn-sm btn-primary rounded-pill">Detail</a>
 
                     </td>
                   <?php } ?>
@@ -83,7 +84,7 @@
               <div class="col-sm-10">
                 <select class="form-control" name="kondisi">
                   <option value="Baik">Baik</option>
-                  <option value="Tidak Baik">Tidak Baik</option>
+                  <option value="Dalam Perbaikan">Dalam Perbaikan</option>
                 </select>
               </div>
             </div>
@@ -110,13 +111,13 @@
             <div class="row mb-3">
               <label for="inputEmail" class="col-sm-2 col-form-label">Username</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="username" value="" placeholder="">
+                <input type="text" class="form-control" name="username" value="" placeholder="" >
               </div>
             </div>
             <div class="row mb-3">
               <label for="inputEmail" class="col-sm-2 col-form-label">Password</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="password" value="" placeholder="">
+                <input type="text" class="form-control" name="password" value="" placeholder="" >
               </div>
             </div>
             <div class="row mb-3">

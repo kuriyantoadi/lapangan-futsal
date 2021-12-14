@@ -76,6 +76,11 @@ class M_admin extends CI_Model{
     return $tampil;
   }
 
+  // public function lapangan_hapus_photo($id_lapangan)
+  // {
+  //   $this->db->where($id_lapangan);
+  //   $this->db->delete('tb_lapangan');
+  // }
 
   public function lapangan_hapus($id_lapangan)
   {
@@ -86,6 +91,20 @@ class M_admin extends CI_Model{
   public function lapangan_tambah($data_tambah)
   {
     $this->db->insert('tb_lapangan', $data_tambah);
+  }
+
+  function cari_lapangan($id_lapangan){
+    $this->db->select('*');
+    $this->db->from('tb_lapangan');
+    $this->db->where('tb_lapangan.id_lapangan',$id_lapangan);
+    $query = $this->db->get()->result();
+    return $query;
+  }
+
+  public function lapangan_hapus_photo($id_lapangan, $data_edit)
+  {
+    $this->db->where('id_lapangan', $id_lapangan);
+    $this->db->update('tb_lapangan', $data_edit);
   }
 
 }

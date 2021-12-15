@@ -1,52 +1,67 @@
-
-<body class="bg-gradient-primary">
-
+<main>
   <div class="container">
 
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-      <div class="col-xl-5 col-lg-12 col-md-9">
+            <!-- <div class="d-flex justify-content-center py-4">
+              <a href="index.html" class="logo d-flex align-items-center w-auto">
+                <img src="assets/img/logo.png" alt="">
+                <span class="d-none d-lg-block">NiceAdmin</span>
+              </a>
+            </div> -->
+            <!-- End Logo -->
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
-          <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-              <div class="col-lg-1">
-              </div>
-              <div class="col-lg-10">
-                <div class="p-5">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-1">Selamat Datang</h1>
-                    <h3 class="h6 text-gray-900 mb-4">Futsal Cikande Login Admin</h3>
-                  </div>
-                  <?= form_open('C_login/admin_login'); ?>
-                    <div class="form-group">
-                      <input type="text" name="username" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                      <input type="password" name="password" class="form-control form-control-user" placeholder="Password">
-                    </div>
+            <div class="card mb-3">
 
-                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Login"></input>
+              <div class="card-body" style="margin: 40px">
 
-                    <hr>
-                    <?= form_close() ?>
-
-
-                  <div class="text-center">
-                    <a class="small" href="register.html">Daftar</a>
-                  </div>
+                <div class="pt-4 pb-2">
+                  <h5 class="card-title text-center pb-0 fs-4">Login Admin</h5>
                 </div>
-              </div>
-              <div class="col-lg-1">
+                <?= form_open('C_login/admin_login'); ?>
+
+                <form class="row g-3 needs-validation" novalidate >
+
+                  <div class="col-12">
+                    <label for="yourUsername" class="form-label">Username</label>
+                    <div class="input-group has-validation">
+                      <input type="text" name="username" class="form-control" id="yourUsername" required>
+                      <div class="invalid-feedback">Please enter your username.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="yourPassword" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="yourPassword" required>
+                    <div class="invalid-feedback">Please enter your password!</div>
+                  </div>
+
+
+                  <div class="col-12">
+                    <button class="btn btn-primary w-100" style="margin-top: 20px" type="submit">Login</button>
+                  </div>
+
+                </form>
+
               </div>
             </div>
+
+            <div class="credits">
+              <!-- All the links in the footer should remain intact. -->
+              <!-- You can delete the links only if you purchased the pro version. -->
+              <!-- Licensing information: https://bootstrapmade.com/license/ -->
+              <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+              <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+            </div>
+
           </div>
         </div>
-
       </div>
 
-    </div>
+    </section>
 
   </div>
+</main><!-- End #main -->

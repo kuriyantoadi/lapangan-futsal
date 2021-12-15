@@ -17,7 +17,7 @@ class C_admin extends CI_Controller {
 	public function dashboard()
 	{
 		$this->load->view('template/header');
-		// $this->load->view('template/menu-admin');
+		$this->load->view('template/menu-admin');
 		$this->load->view('admin/dashboard');
 		$this->load->view('template/footer');
 	}

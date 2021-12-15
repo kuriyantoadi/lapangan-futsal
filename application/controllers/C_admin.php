@@ -17,7 +17,7 @@ class C_admin extends CI_Controller {
 	public function dashboard()
 	{
 		$this->load->view('template/header');
-		$this->load->view('template/menu-admin');
+		// $this->load->view('template/menu-admin');
 		$this->load->view('admin/dashboard');
 		$this->load->view('template/footer');
 	}
@@ -309,6 +309,27 @@ class C_admin extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function lapangan_edit_up()
+	{
+		$config['upload_path']          = 'assets/photo_lapangan';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 1000;
+		// $config['max_width']            = 1024;
+		// $config['max_height']           = 768;
+		$config['encrypt_name']			= TRUE;
+		$this->load->library('upload', $config);
+
+		$this->upload->do_upload('berkas_file');
+
+		$data['nama_berkas'] = $this->upload->data("file_name");
+		$data['keterangan_berkas'] = $this->input->post('keterangan_berkas');
+		$data['tipe_berkas'] = $this->upload->data('file_ext');
+		$data['ukuran_berkas'] = $this->upload->data('file_size');
+
+		$this->db->insert('tb_berkas',$data);
+		redirect('');
+	}
+
 	public function lapangan_hapus_photo1($id_lapangan)
 	{
 		$_id = $this->db->get_where('tb_lapangan',['id_lapangan' => $id_lapangan])->row();
@@ -351,42 +372,7 @@ class C_admin extends CI_Controller {
 		redirect('C_admin/lapangan_edit/'.$id_lapangan);
 	}
 
-	public function upload_berkas()
-	{
-			$config['upload_path'] = 'assets/photo_lapangan';
-			$config['allowed_types'] = 'pdf';
-			$config['max_size'] = 2000;
-			$config['encrypt_name']	= TRUE;
 
-			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('photo_1')) {
-				$error = array('error' => $this->upload->display_errors());
-
-
-				print_r ($error);
-				redirect('C_lapangan');
-
-			}else {
-				$_data = array('upload_data' => $this->upload->data());
-				$tgl_upload = date('d-m-Y  H:i');
-
-				$data = array(
-					'nama_lapangan' => $nama_lapangan,
-					'harga_sewa' => $harga_sewa,
-					'kondisi' => $kondisi,
-					'photo_1'=> $_data['upload_data']['file_name']
-				);
-				$query = $this->db->insert('tb_pembelajaran', $data);
-
-				if ($query) {
-					echo 'berhasil diupload';
-					redirect('C_file');
-				}else {
-					echo 'gagal upload';
-				}
-			}
-
-	}
 
 
 }

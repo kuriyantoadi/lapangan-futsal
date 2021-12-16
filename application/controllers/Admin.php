@@ -10,5 +10,12 @@ class Admin extends CI_Controller {
 		$this->load->view('login_admin');
 		$this->load->view('template/footer');
 	}
-	
+
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		$url = base_url();
+		redirect('Admin');
+	}
+
 }

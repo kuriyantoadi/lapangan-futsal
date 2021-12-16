@@ -107,6 +107,30 @@ class M_admin extends CI_Model{
     $this->db->update('tb_lapangan', $data_edit);
   }
 
+  public function lapangan_edit_up($id_lapangan, $data_edit)
+  {
+    $this->db->where('id_lapangan', $id_lapangan);
+    $this->db->update('tb_lapangan',$data_edit);
+  }
+
+  public function tambah_photo($id_lapangan, $data_edit)
+  {
+    $this->db->where('id_lapangan', $id_lapangan);
+    $this->db->update('tb_lapangan',$data_edit);
+  }
+
+  public function data_akun_up($id_admin, $data_edit)
+  {
+    $this->db->where('id_admin', $id_admin);
+    $this->db->update('tb_admin',$data_edit);
+  }
+
+  public function data_akun_password($id_admin, $data_edit)
+  {
+    $this->db->where('id_admin', $id_admin);
+    $this->db->update('tb_admin',$data_edit);
+  }
+
 }
 
  ?>

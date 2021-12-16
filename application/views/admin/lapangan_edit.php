@@ -9,10 +9,12 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 align="center" class="card-title">Detail Data Lapangan</h5>
+              <h5 align="center" class="card-title">Edit Data Lapangan</h5>
+
+              <?= $this->session->flashdata('msg') ?>
 
               <?php
-              echo form_open('C_admin/lapangan_edit_up');
+              echo form_open_multipart('C_admin/lapangan_edit_up');
               foreach ($cari_lapangan as $row) {
               ?>
 
@@ -32,58 +34,40 @@
               </div>
 
               <div class="row mb-3">
-                <label for="inputText" class="col-sm-2 col-form-label">Photo 1</label>
-                <div class="col-sm-10">
-                <?php if (empty($row->photo_1)): ?>
-                  <input type="file" class="form-control" name="photo_1" required>
-                <?php else: ?>
-                  <img src="<?= base_url() ?>assets/photo_lapangan/<?= $row->photo_1 ?>" alt="" class="form-control">
-                  <br><a href="<?php echo site_url('C_admin/lapangan_hapus_photo1/'.$row->id_lapangan); ?>" class="btn btn-sm btn-danger rounded-pill"
-                    onclick="return confirm('Anda yakin menghapus photo <?= $row->nama_lapangan ?> ?')">Hapus Gambar</a>
-                <?php endif; ?>
-                </div>
-              </div>
-
-              <div class="row mb-3">
-                <label for="inputText" class="col-sm-2 col-form-label">Photo 2</label>
-                <div class="col-sm-10">
-                <?php if (empty($row->photo_2)): ?>
-                  <input type="file" class="form-control" name="photo_2" required>
-                <?php else: ?>
-                  <img src="<?= base_url() ?>assets/photo_lapangan/<?= $row->photo_2 ?>" alt="" class="form-control">
-                  <br><a href="<?php echo site_url('C_admin/lapangan_hapus_photo2/'.$row->id_lapangan); ?>" class="btn btn-sm btn-danger rounded-pill"
-                    onclick="return confirm('Anda yakin menghapus photo <?= $row->nama_lapangan ?> ?')">Hapus Gambar</a>
-                <?php endif; ?>
-                </div>
-              </div>
-
-              <div class="row mb-3">
-                <label for="inputText" class="col-sm-2 col-form-label">Photo 3</label>
-                <div class="col-sm-10">
-                <?php if (empty($row->photo_3)): ?>
-                  <input type="file" class="form-control" name="photo_3" required>
-                <?php else: ?>
-                  <img src="<?= base_url() ?>assets/photo_lapangan/<?= $row->photo_3 ?>" alt="" class="form-control">
-                  <br><a href="<?php echo site_url('C_admin/lapangan_hapus_photo3/'.$row->id_lapangan); ?>" class="btn btn-sm btn-danger rounded-pill"
-                    onclick="return confirm('Anda yakin menghapus photo <?= $row->nama_lapangan ?> ?')">Hapus Gambar</a>
-                <?php endif; ?>
-                </div>
-              </div>
-
-              <div class="row mb-3">
                 <label for="inputText" class="col-sm-2 col-form-label" required>Kondisi </label>
                 <div class="col-sm-10">
                   <select class="form-control" name="kondisi" >
                     <option value="Baik">Baik</option>
                     <option value="Dalam Perbaikan">Dalam Perbaikan</option>
                   </select>
+
+                <center><input value="Simpan Edit Data" type="submit" style="margin-bottom: 30px; margin-top: 15px" class="btn btn-primary btn-sm rounded-pill"></input>
+
+                </div>
+
+              </div>
+               <?= form_close() ?>
+
+             <?php echo form_open_multipart('C_admin/tambah_photo'); ?>
+             <div class="row mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">Photo</label>
+                <div class="col-sm-10">
+                <?php if (empty($row->photo_file)): ?>
+                  <input type="hidden" name="id_lapangan" value="<?= $row->id_lapangan ?>">
+                  <input type="file" class="form-control" name="photo_file" required>
+                  <center><input type="submit" name="" style="margin-top: 15px" class="btn btn-sm btn-success rounded-pill" value="Upload Photo" >
+                <?php else: ?>
+                  <img src="<?= base_url() ?>assets/photo_lapangan/<?= $row->photo_file ?>" alt="" class="form-control">
+                  <br>
+                  <center><a href="<?php echo site_url('C_admin/lapangan_hapus_photo/'.$row->id_lapangan); ?>" class="btn btn-sm btn-danger rounded-pill"
+                    onclick="return confirm('Anda yakin menghapus photo <?= $row->nama_lapangan ?> ?')">Hapus Gambar</a>
+                <?php endif; ?>
                 </div>
               </div>
 
+             <?= form_close() ?>
+
             <?php }  ?>
-              <center>
-              <input value="simpan" type="submit" class="btn btn-primary btn-sm rounded-pill"></input>
-              <a class="btn btn-danger btn-sm rounded-pill" href="<?= base_url() ?>C_admin/data_pelanggan">Kembali</a>
             </div>
           </div>
 

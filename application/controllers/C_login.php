@@ -102,9 +102,14 @@ class C_login extends CI_Controller {
 
     }
 
-    $this->session->set_flashdata('msg', 'Username atau password salah');
-    $url = base_url('C_user/index');
-    redirect($url);
+    $this->session->set_flashdata('msg', '
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Login Gagal
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+            ');
+    redirect ('Admin');
   }
 
 

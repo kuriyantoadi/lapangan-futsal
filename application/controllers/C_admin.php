@@ -7,6 +7,12 @@ class C_admin extends CI_Controller {
 	{
 			parent::__construct();
 			$this->load->model('M_admin');
+
+			// session login
+			if ($this->session->userdata('admin') != true) {
+				$url = base_url('Admin');
+				redirect($url);
+			}
 	}
 
 	public function index()
@@ -16,8 +22,7 @@ class C_admin extends CI_Controller {
 
 	public function dashboard()
 	{
-		$this->load->view('template/header');
-		$this->load->view('template/menu-admin');
+		$this->load->view('template/header-admin');
 		$this->load->view('admin/dashboard');
 		$this->load->view('template/footer');
 	}
@@ -26,8 +31,7 @@ class C_admin extends CI_Controller {
 	{
 		$data['tampil'] = $this->M_admin->tampil_admin();
 
-		$this->load->view('template/header');
-		$this->load->view('template/menu-admin');
+		$this->load->view('template/header-admin');
 		$this->load->view('admin/data_admin', $data);
 		$this->load->view('template/footer');
 	}
@@ -36,8 +40,7 @@ class C_admin extends CI_Controller {
 	{
 		$data['cari_admin'] = $this->M_admin->cari_admin($id_admin);
 
-		$this->load->view('template/header');
-		$this->load->view('template/menu-admin');
+		$this->load->view('template/header-admin');
 		$this->load->view('admin/admin_edit', $data);
 		$this->load->view('template/footer');
 	}
@@ -109,8 +112,8 @@ class C_admin extends CI_Controller {
 	{
 		$data['cari_admin'] = $this->M_admin->cari_admin($id_admin);
 
-		$this->load->view('template/header');
-		$this->load->view('template/menu-admin');
+
+		$this->load->view('template/header-admin');
 		$this->load->view('admin/admin_pass', $data);
 		$this->load->view('template/footer');
 	}
@@ -141,8 +144,8 @@ class C_admin extends CI_Controller {
 	{
 		$data['tampil'] = $this->M_admin->data_pelanggan();
 
-		$this->load->view('template/header');
-		$this->load->view('template/menu-admin');
+
+		$this->load->view('template/header-admin');
 		$this->load->view('admin/data_pelanggan', $data);
 		$this->load->view('template/footer');
 	}
@@ -166,8 +169,8 @@ class C_admin extends CI_Controller {
 	{
 		$data['cari_pelanggan'] = $this->M_admin->cari_pelanggan($id_pelanggan);
 
-		$this->load->view('template/header');
-		$this->load->view('template/menu-admin');
+
+		$this->load->view('template/header-admin');
 		$this->load->view('admin/pelanggan_edit', $data);
 		$this->load->view('template/footer');
 	}
@@ -212,8 +215,8 @@ class C_admin extends CI_Controller {
 	{
 		$data['cari_pelanggan'] = $this->M_admin->cari_pelanggan($id_pelanggan);
 
-		$this->load->view('template/header');
-		$this->load->view('template/menu-admin');
+
+		$this->load->view('template/header-admin');
 		$this->load->view('admin/pelanggan_detail', $data);
 		$this->load->view('template/footer');
 	}
@@ -222,8 +225,8 @@ class C_admin extends CI_Controller {
 	{
 		$data['cari_pelanggan'] = $this->M_admin->cari_pelanggan($id_pelanggan);
 
-		$this->load->view('template/header');
-		$this->load->view('template/menu-admin');
+
+		$this->load->view('template/header-admin');
 		$this->load->view('admin/pelanggan_pass', $data);
 		$this->load->view('template/footer');
 	}
@@ -254,8 +257,8 @@ class C_admin extends CI_Controller {
 	{
 		$data['tampil'] = $this->M_admin->data_lapangan();
 
-		$this->load->view('template/header');
-		$this->load->view('template/menu-admin');
+
+		$this->load->view('template/header-admin');
 		$this->load->view('admin/data_lapangan', $data);
 		$this->load->view('template/footer');
 	}
@@ -303,76 +306,140 @@ class C_admin extends CI_Controller {
 	{
 		$data['cari_lapangan'] = $this->M_admin->cari_lapangan($id_lapangan);
 
-		$this->load->view('template/header');
-		$this->load->view('template/menu-admin');
+
+		$this->load->view('template/header-admin');
 		$this->load->view('admin/lapangan_edit', $data);
 		$this->load->view('template/footer');
 	}
 
+
 	public function lapangan_edit_up()
 	{
-		$config['upload_path']          = 'assets/photo_lapangan';
-		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 1000;
-		// $config['max_width']            = 1024;
-		// $config['max_height']           = 768;
+		$id_lapangan = $this->input->post('id_lapangan');
+
+		$data_edit = array(
+			'nama_lapangan' => $this->input->post('nama_lapangan'),
+			'harga_sewa' => $this->input->post('harga_sewa'),
+			'kondisi' => $this->input->post('kondisi')
+		);
+
+		$this->M_admin->lapangan_edit_up($id_lapangan, $data_edit);
+	}
+
+	public function lapangan_hapus_photo($id_lapangan)
+	{
+		$_id = $this->db->get_where('tb_lapangan',['id_lapangan' => $id_lapangan])->row();
+
+		$data_edit = array(
+			'photo_file' => ''
+		);
+
+		$this->M_admin->lapangan_hapus_photo($id_lapangan, $data_edit);
+		unlink('assets/photo_lapangan/'.$_id->photo_file);
+		// redirect('C_admin/lapangan_edit/'.$id_lapangan);
+
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						Photo Berhasil <b>Dihapus</b>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+						');
+
+		redirect('C_admin/lapangan_edit/'.$id_lapangan);
+	}
+
+	public function lapangan_detail($id_lapangan)
+	{
+		$data['cari_lapangan'] = $this->M_admin->cari_lapangan($id_lapangan);
+
+
+		$this->load->view('template/header-admin');
+		$this->load->view('admin/lapangan_detail', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function tambah_photo() //belum selesai
+	{
+		$config['upload_path'] = 'assets/photo_lapangan/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size'] = 5000;
 		$config['encrypt_name']			= TRUE;
+		$id_lapangan = $this->input->post('id_lapangan');
+
+
 		$this->load->library('upload', $config);
+		if (!$this->upload->do_upload('photo_file')) {
+			$error = array('error' => $this->upload->display_errors());
+			// $this->load->view('upload', $error);
+		}else {
+			$_data = array('upload_data' => $this->upload->data());
 
-		$this->upload->do_upload('berkas_file');
+			$data_edit = array(
+				'photo_file'=> $_data['upload_data']['file_name']
+			);
+			$this->M_admin->tambah_photo($id_lapangan, $data_edit);
 
-		$data['nama_berkas'] = $this->upload->data("file_name");
-		$data['keterangan_berkas'] = $this->input->post('keterangan_berkas');
-		$data['tipe_berkas'] = $this->upload->data('file_ext');
-		$data['ukuran_berkas'] = $this->upload->data('file_size');
+			$this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+						 	Photo Berhasil <b>Diupload</b>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+							');
 
-		$this->db->insert('tb_berkas',$data);
-		redirect('');
+			redirect('C_admin/lapangan_edit/'.$id_lapangan);
+		}
 	}
 
-	public function lapangan_hapus_photo1($id_lapangan)
+	public function data_akun($ses_id)
 	{
-		$_id = $this->db->get_where('tb_lapangan',['id_lapangan' => $id_lapangan])->row();
+		$data['cari_admin'] = $this->M_admin->cari_admin($ses_id);
+
+		$this->load->view('template/header-admin');
+		$this->load->view('admin/data_akun', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function data_akun_up()
+	{
+		$id_admin = $this->input->post('id_admin');
+		$username = $this->input->post('username');
+		$status = $this->input->post('status');
 
 		$data_edit = array(
-			'photo_1' => ''
+			'username' => $username,
+			'status' => $status
 		);
 
-		$this->M_admin->lapangan_hapus_photo($id_lapangan, $data_edit);
+		$this->M_admin->data_akun_up($id_admin, $data_edit);
 
-		unlink('assets/photo_lapangan/'.$_id->photo_1);
-		redirect('C_admin/lapangan_edit/'.$id_lapangan);
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-primary alert-dismissible fade show" role="alert">
+					Data berhasil diupdate
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+						');
+		redirect ('C_admin');
 	}
 
-	public function lapangan_hapus_photo2($id_lapangan)
+	public function data_akun_password()
 	{
-		$_id = $this->db->get_where('tb_lapangan',['id_lapangan' => $id_lapangan])->row();
+		$id_admin = $this->input->post('id_admin');
+		$pass = $this->input->post('password');
+		$password = md5($pass);
 
 		$data_edit = array(
-			'photo_2' => ''
+			'password' => $password
 		);
 
-		$this->M_admin->lapangan_hapus_photo($id_lapangan, $data_edit);
+		$this->M_admin->data_akun_password($id_admin, $data_edit);
 
-		unlink('assets/photo_lapangan/'.$_id->photo_2);
-		redirect('C_admin/lapangan_edit/'.$id_lapangan);
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-primary alert-dismissible fade show" role="alert">
+					Data berhasil diupdate
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+						');
+		redirect ('C_admin');
 	}
-
-	public function lapangan_hapus_photo3($id_lapangan)
-	{
-		$_id = $this->db->get_where('tb_lapangan',['id_lapangan' => $id_lapangan])->row();
-
-		$data_edit = array(
-			'photo_3' => ''
-		);
-
-		$this->M_admin->lapangan_hapus_photo($id_lapangan, $data_edit);
-
-		unlink('assets/photo_lapangan/'.$_id->photo_3);
-		redirect('C_admin/lapangan_edit/'.$id_lapangan);
-	}
-
-
-
 
 }

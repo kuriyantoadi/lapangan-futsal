@@ -1,3 +1,9 @@
+<?php
+$ses_nama = $this->session->userdata('ses_username');
+$ses_id = $this->session->userdata('ses_id');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

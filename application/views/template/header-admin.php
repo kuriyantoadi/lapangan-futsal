@@ -23,6 +23,9 @@ $ses_id = $this->session->userdata('ses_id');
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+  <script src="https://cdn.ckeditor.com/4.13.1/basic/ckeditor.js"></script>
+
+
   <!-- Vendor CSS Files -->
   <link href="<?= base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="<?= base_url() ?>assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -137,6 +140,21 @@ $ses_id = $this->session->userdata('ses_id');
         <a class="nav-link collapsed" href="<?= base_url() ?>C_admin/tampil_admin">
           <i class="bi bi-person-check"></i>
           <span>Data Admin</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= base_url() ?>C_admin/fasilitas">
+          <i class="bi bi-gem"></i>
+          <span>Fasilitas</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= base_url() ?>C_admin/ketentuan">
+          <i class="bi bi-exclamation-triangle"></i>
+          <span>Ketentuan</span>
         </a>
       </li><!-- End Dashboard Nav -->
 

@@ -442,4 +442,148 @@ class C_admin extends CI_Controller {
 		redirect ('C_admin');
 	}
 
+	public function ketentuan()
+	{
+		$data['data_ketentuan'] = $this->M_admin->data_ketentuan();
+
+		$this->load->view('template/header-admin');
+		$this->load->view('admin/ketentuan', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function kententuan_tambah()
+	{
+		$isi_ketentuan = $this->input->post('isi_ketentuan');
+
+		$data_tambah = array(
+			'isi_ketentuan' => $isi_ketentuan
+		);
+
+		$this->M_admin->ketentuan_tambah($data_tambah);
+
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-primary alert-dismissible fade show" role="alert">
+					Data berhasil ditambah
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+						');
+		redirect ('C_admin/ketentuan');
+	}
+
+	public function ketentuan_edit($id_ketentuan)
+	{
+		$data['cari_ketentuan'] = $this->M_admin->cari_ketentuan($id_ketentuan);
+
+		$this->load->view('template/header-admin');
+		$this->load->view('admin/ketentuan_edit', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function ketentuan_edit_up()
+	{
+		$id_ketentuan = $this->input->post('id_ketentuan');
+		$isi_ketentuan = $this->input->post('isi_ketentuan');
+
+		$data_edit = array(
+			'isi_ketentuan' => $isi_ketentuan
+		);
+
+		$this->M_admin->ketentuan_edit_up($id_ketentuan, $data_edit);
+
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-primary alert-dismissible fade show" role="alert">
+					Data berhasil diupdate
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+						');
+		redirect ('C_admin/ketentuan');
+	}
+
+	public function ketentuan_hapus($id_ketentuan)
+	{
+		$id_ketentuan = array('id_ketentuan' => $id_ketentuan);
+
+		$success = $this->M_admin->ketentuan_hapus($id_ketentuan);
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						Data Berhasil Dihapus
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+						');
+		redirect ('C_admin/ketentuan');
+
+	}
+
+	public function fasilitas()
+	{
+		$data['data_fasilitas'] = $this->M_admin->data_fasilitas();
+
+		$this->load->view('template/header-admin');
+		$this->load->view('admin/fasilitas', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function fasilitas_tambah()
+	{
+		$isi_fasilitas = $this->input->post('isi_fasilitas');
+
+		$data_tambah = array(
+			'isi_fasilitas' => $isi_fasilitas
+		);
+
+		$this->M_admin->fasilitas_tambah($data_tambah);
+
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-primary alert-dismissible fade show" role="alert">
+					Data berhasil ditambah
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+						');
+		redirect ('C_admin/fasilitas');
+	}
+
+	public function fasilitas_edit($id_fasilitas)
+	{
+		$data['cari_fasilitas'] = $this->M_admin->cari_fasilitas($id_fasilitas);
+
+		$this->load->view('template/header-admin');
+		$this->load->view('admin/fasilitas_edit', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function fasilitas_edit_up()
+	{
+		$id_fasilitas = $this->input->post('id_fasilitas');
+		$isi_fasilitas = $this->input->post('isi_fasilitas');
+
+		$data_edit = array(
+			'isi_fasilitas' => $isi_fasilitas
+		);
+
+		$this->M_admin->fasilitas_edit_up($id_fasilitas, $data_edit);
+
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-primary alert-dismissible fade show" role="alert">
+					Data berhasil diupdate
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+						');
+		redirect ('C_admin/fasilitas');
+	}
+
+	public function fasilitas_hapus($id_fasilitas)
+	{
+		$id_fasilitas = array('id_fasilitas' => $id_fasilitas);
+
+		$success = $this->M_admin->fasilitas_hapus($id_fasilitas);
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						Data Berhasil Dihapus
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+						');
+		redirect ('C_admin/fasilitas');
+
+	}
+
 }

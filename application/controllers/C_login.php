@@ -39,7 +39,7 @@ class C_login extends CI_Controller {
         $this->session->set_userdata('aktif', true);
         $this->session->set_userdata('ses_id', $data['id_pelanggan']);
         $this->session->set_userdata('ses_username', $data['username']);
-        redirect('C_user/dashboard');
+        redirect('C_pelanggan/dashboard');
 
       }elseif ($data['status']=='pimpinan') {
         $this->session->set_userdata('pimpinan', true);

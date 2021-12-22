@@ -42,13 +42,11 @@
                   <div class="col-12">
                     <label for="yourName" class="form-label">Nama Lengkap</label>
                     <input type="text" name="nama_lengkap" class="form-control"  required>
-
                   </div>
 
                   <div class="col-12">
-                    <label for="yourName" class="form-label">Status</label>
-                    <input type="text" name="status" class="form-control"  required>
-
+                    <!-- <label for="yourName" class="form-label">Status</label> -->
+                    <input type="hidden" name="status" value="aktif" class="form-control"  required>
                   </div>
 
                   <div class="col-12">
@@ -71,9 +69,7 @@
                   <div class="col-12">
                     <label for="yourName" class="form-label">Nama Club</label>
                     <input type="text" name="nama_club" class="form-control"  required>
-
                   </div>
-
 
                   <div class="col-12">
                     <button class="btn btn-primary w-100" style="margin-top: 20px" type="submit">Daftar</button>

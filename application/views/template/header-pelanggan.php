@@ -45,9 +45,9 @@ $ses_id = $this->session->userdata('ses_id');
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="<?= base_url() ?>C_pelanggan/dashboard" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">Futsal</span>
+        <span class="d-none d-lg-block">Futsal Blafut</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->

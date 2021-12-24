@@ -72,7 +72,7 @@
             <?php }  ?>
               <center>
               <input value="simpan" type="submit" class="btn btn-primary btn-sm rounded-pill"></input>
-              <a class="btn btn-danger btn-sm rounded-pill" href="<?= base_url() ?>C_admin/tampil_admin">Kembali</a>
+              <a class="btn btn-danger btn-sm rounded-pill" href="<?= base_url() ?>C_admin/data_pelanggan">Kembali</a>
             </div>
           </div>
 

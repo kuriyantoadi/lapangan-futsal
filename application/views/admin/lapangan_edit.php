@@ -56,6 +56,7 @@
                   <input type="hidden" name="id_lapangan" value="<?= $row->id_lapangan ?>">
                   <input type="file" class="form-control" name="photo_file" required>
                   <center><input type="submit" name="" style="margin-top: 15px" class="btn btn-sm btn-success rounded-pill" value="Upload Photo" >
+
                 <?php else: ?>
                   <img src="<?= base_url() ?>assets/photo_lapangan/<?= $row->photo_file ?>" alt="" class="form-control">
                   <br>

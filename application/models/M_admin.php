@@ -209,6 +209,7 @@ class M_admin extends CI_Model{
     $query = $this->db->get()->result();
     return $query;
   }
+
   public function pesan_lapangan_edit_up($id_sewa, $data_edit)
   {
     $this->db->where('id_sewa', $id_sewa);

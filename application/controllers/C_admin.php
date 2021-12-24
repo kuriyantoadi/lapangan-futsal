@@ -324,6 +324,16 @@ class C_admin extends CI_Controller {
 		);
 
 		$this->M_admin->lapangan_edit_up($id_lapangan, $data_edit);
+
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-info alert-dismissible fade show" role="alert">
+						Edit Lapangan Berhasil
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+						');
+
+		redirect('C_admin/lapangan_edit/'.$id_lapangan);
+
 	}
 
 	public function lapangan_hapus_photo($id_lapangan)
@@ -361,7 +371,7 @@ class C_admin extends CI_Controller {
 	public function tambah_photo() //belum selesai
 	{
 		$config['upload_path'] = 'assets/photo_lapangan/';
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['max_size'] = 5000;
 		$config['encrypt_name']			= TRUE;
 		$id_lapangan = $this->input->post('id_lapangan');
@@ -370,6 +380,7 @@ class C_admin extends CI_Controller {
 		$this->load->library('upload', $config);
 		if (!$this->upload->do_upload('photo_file')) {
 			$error = array('error' => $this->upload->display_errors());
+			echo $error;
 			// $this->load->view('upload', $error);
 		}else {
 			$_data = array('upload_data' => $this->upload->data());
@@ -648,9 +659,7 @@ class C_admin extends CI_Controller {
 			'nominal_pembayaran' => $nominal_pembayaran
 		);
 
-
 		$this->M_admin->pesan_lapangan_edit_up($id_sewa, $data_edit);
-
 
 		$this->session->set_flashdata('msg', '
 					<div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -660,7 +669,94 @@ class C_admin extends CI_Controller {
 						');
 
 		redirect ('C_admin/data_pesan_lapangan');
-
 	}
+
+	public function pesan_lapangan_lihat($id_sewa)
+	{
+		$data['cari_sewa'] = $this->M_admin->cari_sewa($id_sewa);
+
+		$this->load->view('template/header-admin');
+		$this->load->view('admin/data_pesan_lihat', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function data_pesan_lapangan_tolak($id_sewa)
+	{
+
+		$data_edit = array(
+			'status_sewa' => 'Ditolak'
+		);
+
+		$this->M_admin->pesan_lapangan_edit_up($id_sewa, $data_edit);
+
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						Pesan Lapangan Ditolak
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+
+						');
+		redirect ('C_admin/data_pesan_lapangan');
+	}
+
+	public function data_pesan_lapangan_diterima($id_sewa)
+	{
+
+		$data_edit = array(
+			'status_sewa' => 'Diterima'
+		);
+
+		$this->M_admin->pesan_lapangan_edit_up($id_sewa, $data_edit);
+
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						Pesan Lapangan Diterima
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+
+						');
+		redirect ('C_admin/data_pesan_lapangan');
+	}
+
+	public function data_pesan_lapangan_selesai($id_sewa)
+	{
+
+		$data_edit = array(
+			'status_sewa' => 'Selesai'
+		);
+
+		$this->M_admin->pesan_lapangan_edit_up($id_sewa, $data_edit);
+
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						Pesan Lapangan Selesai
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+
+						');
+		redirect ('C_admin/data_pesan_lapangan');
+	}
+
+	public function pesan_lapangan_catatan()
+	{
+		$id_sewa = $this->input->post('id_sewa');
+		$catatan = $this->input->post('catatan');
+
+		$data_edit = array(
+			'catatan' => $catatan
+		);
+
+		$this->M_admin->pesan_lapangan_edit_up($id_sewa, $data_edit);
+
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						Catatan untuk pelanggan terkirim
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+
+						');
+		redirect ('C_admin/pesan_lapangan_lihat/'.$id_sewa);
+
+		}
 
 }

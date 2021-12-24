@@ -79,7 +79,7 @@
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Lama Main</label>
               <div class="col-sm-10">
-                <select class="form-control" name="lama_main">
+                <select class="form-control" name="lama_main" required>
                   <option value="1">1 jam</option>
                   <option value="2">2 jam</option>
                   <option value="3">3 jam</option>

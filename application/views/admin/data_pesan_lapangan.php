@@ -48,7 +48,7 @@
                       <a href="<?php echo site_url('C_admin/pesan_lapangan_hapus/'.$row->id_sewa); ?>" class="btn btn-sm btn-danger rounded-pill"
                         onclick="return confirm('Anda yakin menghapus data <?= $row->nama_lapangan ?> ?')">Hapus</a>
                       <a href="<?php echo site_url('C_admin/pesan_lapangan_edit/'.$row->id_sewa); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a>
-                      <a href="<?php echo site_url('C_admin/pesan_lapangan_liat/'.$row->id_sewa); ?>" class="btn btn-sm btn-secondary rounded-pill">Lihat</a>
+                      <a href="<?php echo site_url('C_admin/pesan_lapangan_lihat/'.$row->id_sewa); ?>" class="btn btn-sm btn-primary rounded-pill">Lihat</a>
 
                     </td>
                   <?php } ?>

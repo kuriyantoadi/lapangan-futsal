@@ -133,17 +133,18 @@ $ses_id = $this->session->userdata('ses_id');
         </a>
       </li><!-- End Dashboard Nav -->
 
+
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pesanan_berlangsung">
-          <i class="bi bi-calendar3"></i>
-          <span>Pesanan Berlangsung</span>
+        <a class="nav-link collapsed" href="<?= base_url() ?>C_pelanggan/fasilitas">
+          <i class="bi bi-gem"></i>
+          <span>Fasilitas</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="Ketentuan Penyewaan">
-          <i class="bi bi-headset"></i>
-          <span>Tentuan Penyewaan</span>
+        <a class="nav-link collapsed" href="<?= base_url() ?>C_pelanggan/ketentuan">
+          <i class="bi bi-exclamation-triangle"></i>
+          <span>Ketentuan Penyewaan</span>
         </a>
       </li><!-- End Dashboard Nav -->
 

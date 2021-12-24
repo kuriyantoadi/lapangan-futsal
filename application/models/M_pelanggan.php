@@ -40,6 +40,18 @@ class M_pelanggan extends CI_Model{
     return $query;
   }
 
+  public function cari_ketentuan()
+  {
+    $tampil = $this->db->get('tb_ketentuan')->result();
+    return $tampil;
+  }
+
+  public function cari_fasilitas()
+  {
+    $tampil = $this->db->get('tb_fasilitas')->result();
+    return $tampil;
+  }
+
 }
 
  ?>

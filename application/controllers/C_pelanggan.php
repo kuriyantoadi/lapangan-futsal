@@ -176,7 +176,8 @@ class C_pelanggan extends CI_Controller {
 				'lama_main' => $lama_main,
 				'nama_lapangan' => $nama_lapangan,
 				'status_pembayaran' => $status_pembayaran,
-				'nominal_pembayaran' => $nominal_pembayaran
+				'nominal_pembayaran' => $nominal_pembayaran,
+				'status_sewa' => 'Menunggu'
 			);
 
 
@@ -190,7 +191,7 @@ class C_pelanggan extends CI_Controller {
 						</div>
 							');
 
-			// redirect('C_pelanggan/lapangan_edit/'.$id_lapangan);
+			redirect('C_pelanggan/riwayat_pesan_lapangan/');
 		}
 	}
 
@@ -201,6 +202,24 @@ class C_pelanggan extends CI_Controller {
 
 		$this->load->view('template/header-pelanggan');
 		$this->load->view('pelanggan/riwayat_pesan_lapangan', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function ketentuan()
+	{
+		$data['cari_ketentuan'] = $this->M_pelanggan->cari_ketentuan();
+
+		$this->load->view('template/header-pelanggan');
+		$this->load->view('pelanggan/ketentuan', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function fasilitas()
+	{
+		$data['cari_fasilitas'] = $this->M_pelanggan->cari_fasilitas();
+
+		$this->load->view('template/header-pelanggan');
+		$this->load->view('pelanggan/fasilitas', $data);
 		$this->load->view('template/footer');
 	}
 

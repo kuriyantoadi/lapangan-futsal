@@ -19,13 +19,14 @@
                   <tr>
                     <th >No</th>
 
-                    <th>Nama Lapangan</th>
+                    <th>Lapangan</th>
+                    <th>Tanggal Pesan</th>
                     <th>Jam Main</th>
                     <th>Tanggal Main</th>
                     <th>Lama Main</th>
                     <th>Pembayaran</th>
                     <th>Status Sewa</th>
-                    <th>Aksi</th>
+                    <!-- <th>Aksi</th> -->
                   </tr>
                 </thead>
                 <?php
@@ -36,8 +37,9 @@
 
                   <tr>
                     <td><?= $no++ ?></td>
-                  
+
                     <td><?= $row->nama_lapangan ?></td>
+                    <td><?= $row->tgl_pesan ?></td>
                     <td><?= $row->jam_main ?></td>
                     <td><?= $row->tgl_main ?></td>
                     <td><?= $row->lama_main ?> Jam</td>

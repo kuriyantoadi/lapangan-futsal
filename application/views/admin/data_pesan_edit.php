@@ -6,26 +6,20 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 align="center" class="card-title">Pesan Lapangan Tambah</h5>
+            <h5 align="center" class="card-title">Pesan Lapangan Edit</h5>
 
             <?= $this->session->flashdata('msg') ?>
 
             <?php
-              echo form_open_multipart('C_pelanggan/pesan_lapangan_up');
-              foreach ($cari_pelanggan as $row) {
+              echo form_open('C_admin/pesan_lapangan_edit_up');
+              foreach ($cari_sewa as $row) {
               ?>
 
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Username</label>
-              <div class="col-sm-10">
-                <input type="hidden" name="id_pelanggan" class="form-control" value="<?= $row->id_pelanggan ?>" readonly>
-                <input type="text" name="username" class="form-control" value="<?= $row->username ?>" readonly>
-              </div>
-            </div>
 
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Nama Lengkap</label>
               <div class="col-sm-10">
+                <input type="hidden" name="id_sewa" value="<?= $row->id_sewa ?>">
                 <input type="text" name="nama_lengkap" class="form-control" value="<?= $row->nama_lengkap ?>" readonly required>
               </div>
             </div>
@@ -48,7 +42,7 @@
               <label for="inputText" class="col-sm-2 col-form-label">Jam Pemesanan</label>
               <div class="col-sm-10">
                 <select class="form-control" name="jam_main" required>
-                  <option value="">Pilihan</option>
+                  <option value="<?= $row->jam_main ?>">Pilihan Awal => <?= $row->jam_main ?></option>
                   <option value="08:00">08:00</option>
                   <option value="09:00">09:00</option>
                   <option value="10:00">10:00</option>
@@ -71,7 +65,7 @@
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Tanggal Main</label>
               <div class="col-sm-10">
-                <input type="date" name="tgl_main" class="form-control" value="" required>
+                <input type="date" name="tgl_main" class="form-control" value="<?= $row->tgl_main ?>" required>
                 <p>Format Bulan/Tanggal/Tahun</p>
               </div>
             </div>
@@ -80,6 +74,7 @@
               <label for="inputText" class="col-sm-2 col-form-label">Lama Main</label>
               <div class="col-sm-10">
                 <select class="form-control" name="lama_main">
+                  <option value="<?= $row->lama_main ?>">Pilihan Awal => <?= $row->lama_main ?></option>
                   <option value="1">1 jam</option>
                   <option value="2">2 jam</option>
                   <option value="3">3 jam</option>
@@ -93,7 +88,7 @@
               <label for="inputText" class="col-sm-2 col-form-label">Pilih Lapangan</label>
               <div class="col-sm-10">
                 <select class="form-control" name="nama_lapangan" required>
-                  <option value="">Pilihan</option>
+                  <option value="<?= $row->nama_lapangan ?>">Pilihan Awal => <?= $row->nama_lapangan ?></option>
                   <?php foreach ($data_lapangan as $row) { ?>
                   <option value="<?= $row->nama_lapangan ?>"><?= $row->nama_lapangan ?></option>
                   <?php } ?>
@@ -104,7 +99,7 @@
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Nominal DP</label>
               <div class="col-sm-10">
-                <input type="number" name="nomiminal_pembyaran" class="form-control" value="" required>
+                <input type="number" name="nominal_pembayaran" class="form-control" value="<?= $row->nominal_pembayaran ?>" required>
                 <p>DP minimal 50.000 Rupiah</p>
               </div>
             </div>
@@ -113,7 +108,7 @@
               <label for="inputText" class="col-sm-2 col-form-label">Status Pembayaran</label>
               <div class="col-sm-10">
                 <select class="form-control" name="status_pembayaran" required>
-                  <option value="">Pilihan</option>
+                  <option value="<?= $row->status_pembayaran ?>">Pilihan Awal => <?= $row->status_pembayaran ?></option>
                   <option value="DP">DP</option>
                   <option value="lunas">Lunas</option>
                 </select>
@@ -123,47 +118,19 @@
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Bukti Pembayaran</label>
               <div class="col-sm-10">
-                <!-- <input class="form-control" type="file" id="formFile"> -->
-                <input type="file" name="bukti_pembayaran" class="form-control" value="" required>
+                <img src="<?= base_url() ?>assets/bukti_pembayaran/<?= $row->bukti_pembayaran ?>" height="200px" alt="bukti_pembayaran">
+
+                <!-- <input type="file" name="bukti_pembayaran" class="form-control" value="" disabled> -->
               </div>
             </div>
 
 
 
-
-
-            <input type="button" class="btn btn-success btn-sm mt-3 rounded-pill" value="Daftar Lapangan" onclick="js_lapangan()">
-            <div id="bl_pilih_lapangan" style="display:none;">
-              <table class="table table-bordered mt-3">
-                <tr>
-                  <th>No</th>
-                  <th>Nama Lapangan</th>
-                  <th>Harga Sewa</th>
-                  <th>Kondisi</th>
-                  <th>File Photo</th>
-                </tr>
-                <?php foreach ($data_lapangan as $row) { ?>
-                <tr>
-                  <?php $no=1; ?>
-                  <td><?= $no++  ?></td>
-                  <td><?= $row->nama_lapangan ?></td>
-                  <td><?= $row->harga_sewa ?></td>
-                  <td><?= $row->kondisi ?></td>
-                  <td>
-                    <img height="300px" src="<?= base_url() ?>assets/photo_lapangan/<?= $row->photo_file ?>" alt="photo lapangan">
-                  </td>
-                </tr>
-                <?php } ?>
-              </table>
-
-
-            </div>
-
           </div>
 
           <?php }  ?>
           <center>
-            <input value="upload" type="submit" class="btn btn-primary btn-md rounded-pill mb-5"></input>
+            <input value="simpan" type="submit" class="btn btn-primary btn-md rounded-pill mb-5"></input>
         </div>
       </div>
 

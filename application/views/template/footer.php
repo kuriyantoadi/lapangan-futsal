@@ -14,6 +14,21 @@
 <!-- Template Main JS File -->
 <script src="<?= base_url() ?>assets/js/main.js"></script>
 
+<script>
+  $('.time-picker').timepicker({
+        showMeridian: false
+    });
+
+    function js_lapangan() {
+      var x = document.getElementById("bl_pilih_lapangan");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+</script>
+
 </body>
 
 </html>

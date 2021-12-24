@@ -583,6 +583,83 @@ class C_admin extends CI_Controller {
 					</div>
 						');
 		redirect ('C_admin/fasilitas');
+	}
+
+	public function data_pesan_lapangan()
+	{
+		$data['tampil'] = $this->M_admin->data_pesan_lapangan();
+
+		$this->load->view('template/header-admin');
+		$this->load->view('admin/data_pesan_lapangan', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function pesan_lapangan_hapus($id_sewa)
+	{
+		$id_sewa = array('id_sewa' => $id_sewa);
+
+		$success = $this->M_admin->pesan_lapangan_hapus($id_sewa);
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						Data Berhasil Dihapus
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+						');
+		redirect ('C_admin/data_pesan_lapangan');
+	}
+
+	public function pesan_lapangan_edit($id_sewa)
+	{
+		$data['cari_sewa'] = $this->M_admin->cari_sewa($id_sewa);
+
+		$this->load->view('template/header-admin');
+		$this->load->view('admin/data_pesan_edit', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function pesan_lapangan_edit_up()
+	{
+		$id_sewa = $this->input->post('id_sewa');
+		$nama_lengkap = $this->input->post('nama_lengkap');
+		$no_hp = $this->input->post('no_hp');
+		$nama_club = $this->input->post('nama_club');
+		$jam_main = $this->input->post('jam_main');
+		$tgl_main = $this->input->post('tgl_main');
+		$lama_main = $this->input->post('lama_main');
+		$nama_lapangan = $this->input->post('nama_lapangan');
+		$bukti_pembayaran = $this->input->post('bukti_pembayaran');
+		$status_pembayaran = $this->input->post('status_pembayaran');
+		$nominal_pembayaran = $this->input->post('nomiminal_pembyaran');
+
+		// date_default_timezone_set('Asia/Jakarta');
+		// $tgl_pesan = date('d-m-Y H:i:s');
+
+		$data_edit = array(
+			// 'id_pelanggan' => $id_pelanggan,
+			'nama_lengkap' => $nama_lengkap,
+			'no_hp' => $no_hp,
+			'nama_club' => $nama_club,
+			// 'tgl_pesan' => $tgl_pesan,
+			'jam_main' => $jam_main,
+			'tgl_main' => $tgl_main,
+			'lama_main' => $lama_main,
+			'nama_lapangan' => $nama_lapangan,
+			'status_pembayaran' => $status_pembayaran,
+			'nominal_pembayaran' => $nominal_pembayaran
+		);
+
+
+		$this->M_admin->pesan_lapangan_edit_up($id_sewa, $data_edit);
+
+
+		$this->session->set_flashdata('msg', '
+					<div class="alert alert-primary alert-dismissible fade show" role="alert">
+					Edit Data Berhasil
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+						');
+
+		redirect ('C_admin/data_pesan_lapangan');
 
 	}
 

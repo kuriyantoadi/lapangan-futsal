@@ -127,6 +127,13 @@ $ses_id = $this->session->userdata('ses_id');
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= base_url() ?>C_pelanggan/riwayat_pesan_lapangan">
+          <i class="bi bi-cart-check"></i>
+          <span>Riwayat Pesan Lapangan</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
         <a class="nav-link collapsed" href="pesanan_berlangsung">
           <i class="bi bi-calendar3"></i>
           <span>Pesanan Berlangsung</span>

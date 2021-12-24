@@ -115,7 +115,7 @@ $ses_id = $this->session->userdata('ses_id');
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
+        <a class="nav-link collapsed" href="<?= base_url() ?>C_admin/data_pesan_lapangan">
           <i class="bi bi-cart-check"></i>
           <span>Data Pesan Lapangan</span>
         </a>

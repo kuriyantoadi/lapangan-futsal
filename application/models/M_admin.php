@@ -191,6 +191,30 @@ class M_admin extends CI_Model{
     $this->db->delete('tb_fasilitas');
   }
 
+  function data_pesan_lapangan(){
+    $tampil = $this->db->get('tb_sewa_lapangan')->result();
+    return $tampil;
+  }
+
+  public function pesan_lapangan_hapus($id_sewa)
+  {
+    $this->db->where($id_sewa);
+    $this->db->delete('tb_sewa_lapangan');
+  }
+
+  function cari_sewa($id_sewa){
+    $this->db->select('*');
+    $this->db->from('tb_sewa_lapangan');
+    $this->db->where('tb_sewa_lapangan.id_sewa',$id_sewa);
+    $query = $this->db->get()->result();
+    return $query;
+  }
+  public function pesan_lapangan_edit_up($id_sewa, $data_edit)
+  {
+    $this->db->where('id_sewa', $id_sewa);
+    $this->db->update('tb_sewa_lapangan', $data_edit);
+  }
+
 }
 
  ?>

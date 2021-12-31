@@ -163,7 +163,7 @@
 
           <?php }  ?>
           <center>
-            <input value="upload" type="submit" class="btn btn-primary btn-md rounded-pill mb-5"></input>
+            <input value="Pesan Lapangan" type="submit" class="btn btn-primary btn-md rounded-pill mb-5"></input>
         </div>
       </div>
 

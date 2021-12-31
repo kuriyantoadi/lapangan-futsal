@@ -205,6 +205,16 @@ class C_pelanggan extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function riwayat_lihat($id_sewa)
+	{
+		// $id_pelanggan = $this->session->userdata('ses_id');
+		$data['tampil'] = $this->M_pelanggan->riwayat_lihat($id_sewa);
+
+		$this->load->view('template/header-pelanggan');
+		$this->load->view('pelanggan/riwayat_lihat', $data);
+		$this->load->view('template/footer');
+	}
+
 	public function ketentuan()
 	{
 		$data['cari_ketentuan'] = $this->M_pelanggan->cari_ketentuan();

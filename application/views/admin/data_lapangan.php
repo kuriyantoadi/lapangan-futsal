@@ -12,7 +12,7 @@
               <h5 align="center" class="card-title">Data Lapangan</h5>
 
               <?= $this->session->flashdata('msg') ?>
-              <?php echo form_open('C_admin/lapangan_tambah'); ?>
+              <?php echo form_open_multipart('C_admin/lapangan_tambah'); ?>
 
               <button style="margin-bottom: 30px; margin-top: 30px" type="button" class="btn btn-primary btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#largeModal">Tambah</button>
 
@@ -76,7 +76,7 @@
             <div class="row mb-3">
               <label for="inputEmail" class="col-sm-2 col-form-label">Harga</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="harga_sewa" value="" placeholder="">
+                <input type="number" class="form-control" name="harga_sewa" value="" placeholder="">
               </div>
             </div>
             <div class="row mb-3">
@@ -88,8 +88,12 @@
                 </select>
               </div>
             </div>
-
-
+            <div class="row mb-3">
+              <label for="inputEmail" class="col-sm-2 col-form-label">Photo Lapangan</label>
+              <div class="col-sm-10">
+                <input type="file" class="form-control" name="photo_file" required>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" name="button">Kembali</button>
@@ -100,7 +104,7 @@
     </div><!-- End Large Modal-->
 
     <!-- Modal Tambah Admin -->
-    <div class="modal fade" id="largeModal" tabindex="-1">
+    <!-- <div class="modal fade" id="largeModal" tabindex="-1">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -138,7 +142,8 @@
           </div>
         </div>
       </div>
-    </div><!-- End Large Modal-->
+    </div> -->
+    <!-- End Large Modal-->
 
 
   </main><!-- End #main -->

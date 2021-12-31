@@ -23,6 +23,7 @@ class M_pelanggan extends CI_Model{
   }
 
   function data_lapangan(){
+    $this->db->order_by('nama_lapangan','ASC');
     $tampil = $this->db->get('tb_lapangan')->result();
     return $tampil;
   }
@@ -36,6 +37,15 @@ class M_pelanggan extends CI_Model{
     $this->db->select('*');
     $this->db->from('tb_sewa_lapangan');
     $this->db->where('tb_sewa_lapangan.id_pelanggan',$id_pelanggan);
+    $query = $this->db->get()->result();
+    return $query;
+  }
+
+  public function riwayat_lihat($id_sewa)
+  {
+    $this->db->select('*');
+    $this->db->from('tb_sewa_lapangan');
+    $this->db->where('tb_sewa_lapangan.id_sewa',$id_sewa);
     $query = $this->db->get()->result();
     return $query;
   }

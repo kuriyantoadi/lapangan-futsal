@@ -278,28 +278,67 @@ class C_admin extends CI_Controller {
 
 	}
 
+	// public function lapangan_tambah()
+	// {
+	// 	$nama_lapangan = $this->input->post('nama_lapangan');
+	// 	$harga_sewa = $this->input->post('harga_sewa');
+	// 	$kondisi = $this->input->post('kondisi');
+	//
+	// 	$data_tambah = array(
+	// 		'nama_lapangan' => $nama_lapangan,
+	// 		'harga_sewa' => $harga_sewa,
+	// 		'kondisi' => $kondisi
+	// 	);
+	//
+	// 	$this->M_admin->lapangan_tambah($data_tambah);
+	//
+	// 	$this->session->set_flashdata('msg', '
+	// 				<div class="alert alert-primary alert-dismissible fade show" role="alert">
+	// 					Data Berhasil Ditambah
+	// 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	// 				</div>
+	// 					');
+	// 	redirect ('C_admin/data_lapangan');
+	// }
+
 	public function lapangan_tambah()
 	{
-		$nama_lapangan = $this->input->post('nama_lapangan');
-		$harga_sewa = $this->input->post('harga_sewa');
-		$kondisi = $this->input->post('kondisi');
 
-		$data_tambah = array(
-			'nama_lapangan' => $nama_lapangan,
-			'harga_sewa' => $harga_sewa,
-			'kondisi' => $kondisi
-		);
+			$config['upload_path'] = 'assets/photo_lapangan/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['max_size'] = 5000;
+			$config['encrypt_name']			= TRUE;
+			$id_lapangan = $this->input->post('id_lapangan');
 
-		$this->M_admin->lapangan_tambah($data_tambah);
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('photo_file')) {
+				$error = array('error' => $this->upload->display_errors());
+				echo $error;
+				// $this->load->view('upload', $error);
+			}else {
+				$_data = array('upload_data' => $this->upload->data());
+				$nama_lapangan = $this->input->post('nama_lapangan');
+				$harga_sewa = $this->input->post('harga_sewa');
+				$kondisi = $this->input->post('kondisi');
 
-		$this->session->set_flashdata('msg', '
-					<div class="alert alert-primary alert-dismissible fade show" role="alert">
-						Data Berhasil Ditambah
-						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-					</div>
-						');
-		redirect ('C_admin/data_lapangan');
-	}
+				$data_tambah = array(
+					'photo_file'=> $_data['upload_data']['file_name'],
+					'nama_lapangan' => $nama_lapangan,
+					'harga_sewa' => $harga_sewa,
+					'kondisi' => $kondisi
+				);
+				$this->M_admin->lapangan_tambah($data_tambah);
+
+				$this->session->set_flashdata('msg', '
+							<div class="alert alert-primary alert-dismissible fade show" role="alert">
+								Tambah Lapangan Berhasil
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+							</div>
+				');
+
+				redirect('C_admin/data_lapangan/');
+			}
+		}
 
 
 	public function lapangan_edit($id_lapangan)

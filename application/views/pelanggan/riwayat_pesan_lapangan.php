@@ -21,12 +21,12 @@
 
                     <th>Lapangan</th>
                     <th>Tanggal Pesan</th>
-                    <th>Jam Main</th>
+                    <!-- <th>Jam Main</th> -->
                     <th>Tanggal Main</th>
-                    <th>Lama Main</th>
+                    <!-- <th>Lama Main</th> -->
                     <th>Pembayaran</th>
                     <th>Status Sewa</th>
-                    <!-- <th>Aksi</th> -->
+                    <th>Pilihan</th>
                   </tr>
                 </thead>
                 <?php
@@ -40,17 +40,17 @@
 
                     <td><?= $row->nama_lapangan ?></td>
                     <td><?= $row->tgl_pesan ?></td>
-                    <td><?= $row->jam_main ?></td>
+                    <!-- <td><?= $row->jam_main ?></td> -->
                     <td><?= $row->tgl_main ?></td>
-                    <td><?= $row->lama_main ?> Jam</td>
+                    <!-- <td><?= $row->lama_main ?> Jam</td> -->
                     <td><?= $row->status_pembayaran ?></td>
                     <td><?= $row->status_sewa ?></td>
 
                     <td>
                       <!-- <a href="<?php echo site_url('C_admin/admin_hapus/'.$row->id_admin); ?>" class="btn btn-sm btn-danger rounded-pill"
                         onclick="return confirm('Anda yakin menghapus data <?= $row->username ?> ?')">Hapus</a>
-                      <a href="<?php echo site_url('C_admin/admin_edit/'.$row->id_admin); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a>
-                      <a href="<?php echo site_url('C_admin/admin_pass/'.$row->id_admin); ?>" class="btn btn-sm btn-secondary rounded-pill">Reset Password</a> -->
+                      <a href="<?php echo site_url('C_admin/admin_edit/'.$row->id_admin); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a> -->
+                      <a href="<?php echo site_url('C_pelanggan/riwayat_lihat/'.$row->id_sewa); ?>" class="btn btn-sm btn-success rounded-pill">Lihat</a>
 
                     </td>
                   <?php } ?>

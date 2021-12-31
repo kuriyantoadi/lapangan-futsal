@@ -94,7 +94,7 @@
               <label for="inputText" class="col-sm-2 col-form-label">Catatan Untuk Pelanggan</label>
               <div class="col-sm-10">
                 <textarea name="catatan" class="form-control" rows="8" cols="80"><?= $row->catatan ?></textarea>
-                <input type="submit" name="" value="Kirim Catatan" class="btn btn-secondary btn-sm">
+                <input type="submit" name="" value="Kirim Catatan" class="btn btn-secondary btn-sm mt-2">
               </div>
             </div>
 

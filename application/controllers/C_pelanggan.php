@@ -26,7 +26,7 @@ class C_pelanggan extends CI_Controller {
 
 	public function daftar()
 	{
-		$pelangganname = $this->input->post('pelangganname');
+		$username = $this->input->post('username');
 		$pass = $this->input->post('password');
 		$password = md5($pass);
 		$nama_lengkap = $this->input->post('nama_lengkap');
@@ -36,7 +36,7 @@ class C_pelanggan extends CI_Controller {
 		$nama_club = $this->input->post('nama_club');
 
 		$data_tambah = array(
-			'pelangganname' => $pelangganname,
+			'username' => $username,
 			'password' => $password,
 			'nama_lengkap' => $nama_lengkap,
 			'status' => 'aktif',

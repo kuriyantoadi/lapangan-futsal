@@ -23,7 +23,7 @@
                   <p class="text-center small">Blafut Futsal Cikande </p>
                 </div>
 
-                <?= form_open('C_user/daftar'); ?>
+                <?= form_open('C_pelanggan/daftar'); ?>
                 <form class="row g-6 needs-validation" style="margin-left: 30px; margin-right: 30px" novalidate >
 
                   <div class="col-12" >

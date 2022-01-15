@@ -36,8 +36,8 @@
                     <td><?= $row->isi_fasilitas ?></td>
                     <td>
                       <a href="<?php echo site_url('C_admin/fasilitas_hapus/'.$row->id_fasilitas); ?>" class="btn btn-sm btn-danger rounded-pill"
-                        onclick="return confirm('Anda yakin menghapus data <?= $row->isi_fasilitas ?> ?')">Hapus</a>
-                      <a href="<?php echo site_url('C_admin/fasilitas_edit/'.$row->id_fasilitas); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a>
+                        onclick="return confirm('Anda yakin menghapus data <?= $row->isi_fasilitas ?> ?')"><i class="bi bi-trash-fill" title="Hapus"></i></a>
+                      <a href="<?php echo site_url('C_admin/fasilitas_edit/'.$row->id_fasilitas); ?>" class="btn btn-sm btn-success rounded-pill" title="Edit"><i class="bi bi-pencil-fill"></i></a>
 
                     </td>
                   <?php } ?>

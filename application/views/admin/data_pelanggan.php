@@ -42,10 +42,10 @@
                     <td><?= $row->status ?></td>
                     <td>
                       <a href="<?php echo site_url('C_admin/pelanggan_hapus/'.$row->id_pelanggan); ?>" class="btn btn-sm btn-danger rounded-pill"
-                        onclick="return confirm('Anda yakin menghapus data <?= $row->username ?> ?')">Hapus</a>
-                      <a href="<?php echo site_url('C_admin/pelanggan_edit/'.$row->id_pelanggan); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a>
-                      <a href="<?php echo site_url('C_admin/pelanggan_pass/'.$row->id_pelanggan); ?>" class="btn btn-sm btn-secondary rounded-pill">Password</a>
-                      <a href="<?php echo site_url('C_admin/pelanggan_detail/'.$row->id_pelanggan); ?>" class="btn btn-sm btn-primary rounded-pill">Detail</a>
+                        onclick="return confirm('Anda yakin menghapus data <?= $row->username ?> ?')" title="Hapus"><i class="bi bi-trash-fill"></i></a>
+                      <a href="<?php echo site_url('C_admin/pelanggan_edit/'.$row->id_pelanggan); ?>" class="btn btn-sm btn-success rounded-pill" title="Edit"><i class="bi bi-pencil-fill"></i></a>
+                      <a href="<?php echo site_url('C_admin/pelanggan_pass/'.$row->id_pelanggan); ?>" class="btn btn-sm btn-secondary rounded-pill" title="Ubah Password"><i class="bi bi-key-fill"></i></a>
+                      <a href="<?php echo site_url('C_admin/pelanggan_detail/'.$row->id_pelanggan); ?>" class="btn btn-sm btn-primary rounded-pill" title="Lihat"><i class="bi bi-eye-fill"></i></a>
 
                     </td>
                   <?php } ?>

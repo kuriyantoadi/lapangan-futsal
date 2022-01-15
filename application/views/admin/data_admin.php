@@ -14,7 +14,7 @@
               <?= $this->session->flashdata('msg') ?>
               <?php echo form_open('C_admin/admin_tambah'); ?>
 
-              <button style="margin-bottom: 30px; margin-top: 30px" type="button" class="btn btn-primary btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#largeModal">Tambah Admin</button>
+              <button style="margin-bottom: 30px; margin-top: 30px" type="button" class="btn btn-primary btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#largeModal"><i class="bi bi-person-plus-fill"></i> Tambah</button>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
@@ -38,9 +38,9 @@
                     <td><?= $row->status ?></td>
                     <td>
                       <a href="<?php echo site_url('C_admin/admin_hapus/'.$row->id_admin); ?>" class="btn btn-sm btn-danger rounded-pill"
-                        onclick="return confirm('Anda yakin menghapus data <?= $row->username ?> ?')">Hapus</a>
-                      <a href="<?php echo site_url('C_admin/admin_edit/'.$row->id_admin); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a>
-                      <a href="<?php echo site_url('C_admin/admin_pass/'.$row->id_admin); ?>" class="btn btn-sm btn-secondary rounded-pill">Reset Password</a>
+                        onclick="return confirm('Anda yakin menghapus data <?= $row->username ?> ?')" title="Hapus"><i class="bi bi-trash-fill"></i></a>
+                      <a href="<?php echo site_url('C_admin/admin_edit/'.$row->id_admin); ?>" class="btn btn-sm btn-success rounded-pill" title="Edit"><i class="bi bi-pencil-fill"></i></a>
+                      <a href="<?php echo site_url('C_admin/admin_pass/'.$row->id_admin); ?>" class="btn btn-sm btn-secondary rounded-pill" title="Ganti Password"><i class="bi bi-key-fill"></i></a>
 
                     </td>
                   <?php } ?>

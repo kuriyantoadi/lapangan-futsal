@@ -40,9 +40,9 @@
                     <td><?= $row->kondisi ?></td>
                     <td>
                       <a href="<?php echo site_url('C_admin/lapangan_hapus/'.$row->id_lapangan); ?>" class="btn btn-sm btn-danger rounded-pill"
-                        onclick="return confirm('Anda yakin menghapus data <?= $row->id_lapangan ?> ?')">Hapus</a>
-                      <a href="<?php echo site_url('C_admin/lapangan_edit/'.$row->id_lapangan); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a>
-                      <a href="<?php echo site_url('C_admin/lapangan_detail/'.$row->id_lapangan); ?>" class="btn btn-sm btn-primary rounded-pill">Detail</a>
+                        onclick="return confirm('Anda yakin menghapus data <?= $row->id_lapangan ?> ?')"><i class="bi bi-trash-fill" title="Hapus"></i></a>
+                      <a href="<?php echo site_url('C_admin/lapangan_edit/'.$row->id_lapangan); ?>" class="btn btn-sm btn-success rounded-pill"><i class="bi bi-pencil-fill" title="Edit"></i></a>
+                      <a href="<?php echo site_url('C_admin/lapangan_detail/'.$row->id_lapangan); ?>" class="btn btn-sm btn-primary rounded-pill"><i class="bi bi-eye-fill" title="Lihat"></i></a>
 
                     </td>
                   <?php } ?>

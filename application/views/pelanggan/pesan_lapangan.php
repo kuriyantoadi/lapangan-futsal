@@ -125,12 +125,10 @@
               <div class="col-sm-10">
                 <!-- <input class="form-control" type="file" id="formFile"> -->
                 <input type="file" name="bukti_pembayaran" class="form-control" value="" required>
+                <p>Bukti dalam bentuk photo file (png, jpg, jpeg)
+                <br>Ukuran maksimal 5 MB</p>
               </div>
             </div>
-
-
-
-
 
             <input type="button" class="btn btn-success btn-sm mt-3 rounded-pill" value="Daftar Lapangan" onclick="js_lapangan()">
             <div id="bl_pilih_lapangan" style="display:none;">

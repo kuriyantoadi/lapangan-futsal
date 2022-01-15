@@ -72,6 +72,7 @@ class M_admin extends CI_Model{
   }
 
   function data_lapangan(){
+    $this->db->order_by('nama_lapangan','ASC');
     $tampil = $this->db->get('tb_lapangan')->result();
     return $tampil;
   }

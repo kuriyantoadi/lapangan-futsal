@@ -50,7 +50,7 @@
                       <!-- <a href="<?php echo site_url('C_admin/admin_hapus/'.$row->id_admin); ?>" class="btn btn-sm btn-danger rounded-pill"
                         onclick="return confirm('Anda yakin menghapus data <?= $row->username ?> ?')">Hapus</a>
                       <a href="<?php echo site_url('C_admin/admin_edit/'.$row->id_admin); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a> -->
-                      <a href="<?php echo site_url('C_pelanggan/riwayat_lihat/'.$row->id_sewa); ?>" class="btn btn-sm btn-success rounded-pill">Lihat</a>
+                      <a href="<?php echo site_url('C_pelanggan/riwayat_lihat/'.$row->id_sewa); ?>" class="btn btn-sm btn-success rounded-pill" title="Lihat"><i class="bi bi-eye-fill"></i></a>
 
                     </td>
                   <?php } ?>

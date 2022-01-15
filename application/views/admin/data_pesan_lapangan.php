@@ -41,14 +41,26 @@
                     <td><?= $row->jam_main ?></td>
                     <td><?= $row->tgl_main ?></td>
                     <td><?= $row->lama_main ?> Jam</td>
-                    <td><?= $row->status_pembayaran ?></td>
+                    <td><?= $row->status_pembayaran ?>
+                      <br>
+                      <?php
+                      function rupiah($angka){
+                      	$hasil_rupiah = "Rp " . number_format($angka,0, ".", ".");
+                      	return $hasil_rupiah;
+                      }
+
+                      $nominal_pembayaran = $row->nominal_pembayaran
+
+                       ?>
+                      (<?= rupiah($nominal_pembayaran) ?>)
+                    </td>
                     <td><?= $row->status_sewa ?></td>
 
                     <td>
-                      <a href="<?php echo site_url('C_admin/pesan_lapangan_hapus/'.$row->id_sewa); ?>" class="btn btn-sm btn-danger rounded-pill"
-                        onclick="return confirm('Anda yakin menghapus data <?= $row->nama_lapangan ?> ?')">Hapus</a>
-                      <a href="<?php echo site_url('C_admin/pesan_lapangan_edit/'.$row->id_sewa); ?>" class="btn btn-sm btn-success rounded-pill">Edit</a>
-                      <a href="<?php echo site_url('C_admin/pesan_lapangan_lihat/'.$row->id_sewa); ?>" class="btn btn-sm btn-primary rounded-pill">Lihat</a>
+                      <a href="<?php echo site_url('C_admin/pesan_lapangan_hapus/'.$row->id_sewa); ?>"
+                        onclick="return confirm('Anda yakin menghapus data <?= $row->nama_lapangan ?> ?')" type="button" class="btn btn-danger btn-sm rounded-pill" title="Hapus"><i class="bi bi-trash-fill"></i></a>
+                      <a href="<?php echo site_url('C_admin/pesan_lapangan_edit/'.$row->id_sewa); ?>" class="btn btn-sm btn-success rounded-pill" title="Edit"><i class="bi bi-pencil-fill"></i></a>
+                      <a href="<?php echo site_url('C_admin/pesan_lapangan_lihat/'.$row->id_sewa); ?>" class="btn btn-sm btn-primary rounded-pill" title="Lihat"><i class="bi bi-eye-fill"></i></a>
 
                     </td>
                   <?php } ?>

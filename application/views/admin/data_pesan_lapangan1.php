@@ -44,9 +44,16 @@
                     <td><?= $row->status_pembayaran ?>
                       <br>
                       <?php
+                      function rupiah($angka){
+                      	$hasil_rupiah = "Rp " . number_format($angka,0, ".", ".");
+                      	return $hasil_rupiah;
+                      }
+
+                       ?>
+                      (<?=
                       $nominal_pembayaran = $row->nominal_pembayaran;
-                      echo "Rp. ". number_format($nominal_pembayaran, 0, ".", ".");
-                      ?>
+                      rupiah($nominal_pembayaran)
+                      ?>)
                     </td>
                     <td><?= $row->status_sewa ?></td>
 

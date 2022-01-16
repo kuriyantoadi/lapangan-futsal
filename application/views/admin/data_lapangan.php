@@ -27,12 +27,12 @@
                     <th>Aksi</th>
                   </tr>
                 </thead>
-                <?php
-                $no=1;
-                foreach ($tampil as $row) {
-                 ?>
-                <tbody>
 
+                <tbody>
+                  <?php
+                  $no=1;
+                  foreach ($tampil as $row) {
+                   ?>
                   <tr>
                     <td><?= $no++ ?></td>
                     <td><?= $row->nama_lapangan ?></td>
@@ -45,6 +45,7 @@
                       <a href="<?php echo site_url('C_admin/lapangan_detail/'.$row->id_lapangan); ?>" class="btn btn-sm btn-primary rounded-pill"><i class="bi bi-eye-fill" title="Lihat"></i></a>
 
                     </td>
+                  </tr>
                   <?php } ?>
 
                 </tbody>

@@ -35,6 +35,8 @@ $ses_id = $this->session->userdata('ses_id');
   <link href="<?= base_url() ?>assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="<?= base_url() ?>assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+  <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css"> -->
+
   <!-- Template Main CSS File -->
   <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
 
@@ -48,7 +50,7 @@ $ses_id = $this->session->userdata('ses_id');
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="<?= base_url() ?>C_admin" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <!-- <img src="assets/img/logo.png" alt=""> -->
         <span class="d-none d-lg-block">Futsal Blafut</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -157,8 +159,6 @@ $ses_id = $this->session->userdata('ses_id');
           <span>Ketentuan</span>
         </a>
       </li><!-- End Dashboard Nav -->
-
-
     </ul>
 
   </aside><!-- End Sidebar-->

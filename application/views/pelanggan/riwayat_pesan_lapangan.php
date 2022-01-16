@@ -29,12 +29,12 @@
                     <th>Pilihan</th>
                   </tr>
                 </thead>
-                <?php
-                $no=1;
-                foreach ($tampil as $row) {
-                 ?>
-                <tbody>
 
+                <tbody>
+                  <?php
+                  $no=1;
+                  foreach ($tampil as $row) {
+                   ?>
                   <tr>
                     <td><?= $no++ ?></td>
 
@@ -53,6 +53,8 @@
                       <a href="<?php echo site_url('C_pelanggan/riwayat_lihat/'.$row->id_sewa); ?>" class="btn btn-sm btn-success rounded-pill" title="Lihat"><i class="bi bi-eye-fill"></i></a>
 
                     </td>
+                  </tr>
+
                   <?php } ?>
 
                 </tbody>

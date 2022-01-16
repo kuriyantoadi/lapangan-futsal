@@ -18,7 +18,6 @@
                 <thead>
                   <tr>
                     <th >No</th>
-
                     <th>Nama Lapangan</th>
                     <th>Jam Main</th>
                     <th>Tanggal Main</th>
@@ -28,12 +27,12 @@
                     <th>Aksi</th>
                   </tr>
                 </thead>
-                <?php
-                $no=1;
-                foreach ($tampil as $row) {
-                 ?>
-                <tbody>
 
+                <tbody>
+                  <?php
+                  $no=1;
+                  foreach ($tampil as $row) {
+                   ?>
                   <tr>
                     <td><?= $no++ ?></td>
 
@@ -57,6 +56,7 @@
                       <a href="<?php echo site_url('C_admin/pesan_lapangan_lihat/'.$row->id_sewa); ?>" class="btn btn-sm btn-primary rounded-pill" title="Lihat"><i class="bi bi-eye-fill"></i></a>
 
                     </td>
+                  </tr>
                   <?php } ?>
 
                 </tbody>

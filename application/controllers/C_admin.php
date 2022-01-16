@@ -91,6 +91,9 @@ class C_admin extends CI_Controller {
 		$status = $this->input->post('status');
 		$password = md5($pass);
 
+		echo $username;
+		echo $pass;
+
 		$data_tambah = array(
 			'username' => $username,
 			'password' => $password,

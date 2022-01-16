@@ -25,12 +25,12 @@
                     <th>Aksi</th>
                   </tr>
                 </thead>
+
+                <tbody>
                 <?php
                 $no=1;
                 foreach ($data_fasilitas as $row) {
-                 ?>
-                <tbody>
-
+                  ?>
                   <tr>
                     <td><?= $no++ ?></td>
                     <td><?= $row->isi_fasilitas ?></td>
@@ -40,6 +40,7 @@
                       <a href="<?php echo site_url('C_admin/fasilitas_edit/'.$row->id_fasilitas); ?>" class="btn btn-sm btn-success rounded-pill" title="Edit"><i class="bi bi-pencil-fill"></i></a>
 
                     </td>
+                  </tr>
                   <?php } ?>
 
                 </tbody>

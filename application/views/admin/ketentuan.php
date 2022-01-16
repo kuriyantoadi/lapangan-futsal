@@ -25,12 +25,12 @@
                     <th>Aksi</th>
                   </tr>
                 </thead>
-                <?php
-                $no=1;
-                foreach ($data_ketentuan as $row) {
-                 ?>
-                <tbody>
 
+                <tbody>
+                  <?php
+                  $no=1;
+                  foreach ($data_ketentuan as $row) {
+                   ?>
                   <tr>
                     <td><?= $no++ ?></td>
                     <td><?= $row->isi_ketentuan ?></td>
@@ -39,7 +39,8 @@
                         onclick="return confirm('Anda yakin menghapus data <?= $row->isi_ketentuan ?> ?')"><i class="bi bi-trash-fill" title="Hapus"></i></a>
                       <a href="<?php echo site_url('C_admin/ketentuan_edit/'.$row->id_ketentuan); ?>" class="btn btn-sm btn-success rounded-pill" title="Edit"><i class="bi bi-pencil-fill"></i></a>
 
-                    </td>
+                    </td>                      
+                    </tr>
                   <?php } ?>
 
                 </tbody>

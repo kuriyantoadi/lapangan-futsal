@@ -17,9 +17,9 @@
 <script src="<?= base_url() ?>assets/js/main.js"></script>
 
 <script>
-  $('.time-picker').timepicker({
-        showMeridian: false
-    });
+  // $('.time-picker').timepicker({
+  //       showMeridian: false
+  //   });
 
     function js_lapangan() {
       var x = document.getElementById("bl_pilih_lapangan");
@@ -29,6 +29,26 @@
         x.style.display = "none";
       }
     }
+
+    $('#lama_main').on('change', function(){
+    // ambil data dari elemen option yang dipilih
+    const sewa = $('#lama_main option:selected').data('sewa');
+    const nominal_pembayaran = $('#nominal_pembayaran option:selected').data('sewa');
+
+    // const discount = $('#package option:selected').data('discount');
+
+    // kalkulasi total harga
+    // const totalDiscount = (sewa * discount/100)
+    // const total = sewa - totalDiscount;
+
+    // tampilkan data ke element
+    $('[name=sewa]').val(`Rp ${sewa}`);
+    // $('[name=discount]').val(totalDiscount);
+
+    // $('#sewa').text(`Rp ${sewa}`);
+    });
+
+
 </script>
 
 </body>

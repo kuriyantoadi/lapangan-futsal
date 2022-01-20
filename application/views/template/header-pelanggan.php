@@ -23,6 +23,7 @@ $ses_id = $this->session->userdata('ses_id');
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+
   <!-- Vendor CSS Files -->
   <link href="<?= base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="<?= base_url() ?>assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -34,6 +35,7 @@ $ses_id = $this->session->userdata('ses_id');
 
   <!-- Template Main CSS File -->
   <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
@@ -46,7 +48,7 @@ $ses_id = $this->session->userdata('ses_id');
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="<?= base_url() ?>C_pelanggan/dashboard" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <!-- <img src="assets/img/logo.png" alt=""> -->
         <span class="d-none d-lg-block">Futsal Blafut</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>

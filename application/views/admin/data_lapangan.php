@@ -14,7 +14,7 @@
               <?= $this->session->flashdata('msg') ?>
               <?php echo form_open_multipart('C_admin/lapangan_tambah'); ?>
 
-              <button style="margin-bottom: 30px; margin-top: 30px" type="button" class="btn btn-primary btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#largeModal">Tambah</button>
+              <button style="margin-bottom: 30px; margin-top: 10px" type="button" class="btn btn-primary btn-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#largeModal">Tambah</button>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
@@ -22,7 +22,6 @@
                   <tr>
                     <th>No</th>
                     <th>Nama Lapangan</th>
-                    <th>Harga Sewa</th>
                     <th>Kondisi</th>
                     <th>Aksi</th>
                   </tr>
@@ -36,7 +35,6 @@
                   <tr>
                     <td><?= $no++ ?></td>
                     <td><?= $row->nama_lapangan ?></td>
-                    <td><?= $row->harga_sewa ?></td>
                     <td><?= $row->kondisi ?></td>
                     <td>
                       <a href="<?php echo site_url('C_admin/lapangan_hapus/'.$row->id_lapangan); ?>" class="btn btn-sm btn-danger rounded-pill"
@@ -103,48 +101,6 @@
         </div>
       </div>
     </div><!-- End Large Modal-->
-
-    <!-- Modal Tambah Admin -->
-    <!-- <div class="modal fade" id="largeModal" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Password Admin</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="row mb-3">
-              <label for="inputEmail" class="col-sm-2 col-form-label">Username</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="username" value="" placeholder="" >
-              </div>
-            </div>
-            <div class="row mb-3">
-              <label for="inputEmail" class="col-sm-2 col-form-label">Password</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="password" value="" placeholder="" >
-              </div>
-            </div>
-            <div class="row mb-3">
-              <label for="inputEmail" class="col-sm-2 col-form-label">Status</label>
-              <div class="col-sm-10">
-                <select class="form-control" name="status">
-                  <option value="Admin">Admin</option>
-                  <option value="Tidak Aktif">Tidak Aktif</option>
-                </select>
-              </div>
-            </div>
-
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" name="button">Kembali</button>
-            <input type="submit" class="btn btn-primary" name="" value="Simpan">
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- End Large Modal-->
 
 
   </main><!-- End #main -->

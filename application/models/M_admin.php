@@ -217,6 +217,22 @@ class M_admin extends CI_Model{
     $this->db->update('tb_sewa_lapangan', $data_edit);
   }
 
+  function lama_sewa(){
+    $tampil = $this->db->get('tb_lama_sewa')->result();
+    return $tampil;
+  }
+
+  public function lama_sewa_tambah($data_tambah)
+  {
+    $this->db->insert('tb_lama_sewa', $data_tambah);
+  }
+
+  public function lama_sewa_hapus($id_lama_sewa)
+  {
+    $this->db->where($id_lama_sewa);
+    $this->db->delete('tb_lama_sewa');
+  }
+
 }
 
  ?>

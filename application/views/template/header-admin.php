@@ -132,6 +132,13 @@ $ses_id = $this->session->userdata('ses_id');
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= base_url() ?>C_admin/data_lama_sewa">
+          <i class="bi bi-clock-history"></i>
+          <span>Data Lama Sewa</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
         <a class="nav-link collapsed" href="<?= base_url() ?>C_admin/data_pelanggan">
           <i class="bi bi-people"></i>
           <span>Data Pelanggan</span>

@@ -798,6 +798,50 @@ class C_admin extends CI_Controller {
 
 						');
 		redirect ('C_admin/pesan_lapangan_lihat/'.$id_sewa);
+		}
+
+		public function data_lama_sewa()
+		{
+			$data['tampil'] = $this->M_admin->lama_sewa();
+
+			$this->load->view('template/header-admin');
+			$this->load->view('admin/data_lama_sewa', $data);
+			$this->load->view('template/footer');
+		}
+
+		public function lama_sewa_tambah()
+		{
+			$lama_sewa = $this->input->post('lama_sewa');
+			$nominal = $this->input->post('nominal');
+
+			$data_tambah = array(
+				'lama_sewa' => $lama_sewa,
+				'nominal' => $nominal
+			);
+
+			$this->M_admin->lama_sewa_tambah($data_tambah);
+
+			$this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							Data Berhasil Ditambah
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+							');
+			redirect ('C_admin/data_lama_sewa');
+		}
+
+		public function lama_sewa_hapus($id_lama_sewa)
+		{
+			$id_lama_sewa = array('id_lama_sewa' => $id_lama_sewa);
+
+			$success = $this->M_admin->lama_sewa_hapus($id_lama_sewa);
+			$this->session->set_flashdata('msg', '
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							Data Berhasil Dihapus
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+							');
+			redirect ('C_admin/data_lama_sewa');
 
 		}
 

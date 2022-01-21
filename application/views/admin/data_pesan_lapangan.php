@@ -40,11 +40,17 @@
                     <td><?= $row->jam_main ?></td>
                     <td><?= $row->tgl_main ?></td>
                     <td><?= $row->lama_main ?> Jam</td>
-                    <td><?= $row->status_pembayaran ?>
+                    <td>
+                      <?php
+                      echo "Rp. ". number_format( $row->nominal_pembayaran, 0, ".", "."). " (DP)";
+                      ?>
                       <br>
                       <?php
-                      $nominal_pembayaran = $row->nominal_pembayaran;
-                      echo "Rp. ". number_format($nominal_pembayaran, 0, ".", ".");
+                      if ($row->status_pembayaran < 0) {
+                        echo "Rp. ". number_format( $row->status_pembayaran, 0, ".", ".");
+                      }else {
+                        echo "Lunas";
+                      }
                       ?>
                     </td>
                     <td><?= $row->status_sewa ?></td>

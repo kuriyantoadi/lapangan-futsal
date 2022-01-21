@@ -73,45 +73,45 @@
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Lama Main</label>
               <div class="col-sm-10">
-                <select class="form-control" name="lama_main" required>
+                <select class="form-control" name="lama_main" id="lama_main" required>
                   <option value="<?= $row->lama_main ?>">Pilihan Awal => <?= $row->lama_main ?></option>
-                  <option value="1">1 jam</option>
-                  <option value="2">2 jam</option>
-                  <option value="3">3 jam</option>
-                  <option value="4">4 jam</option>
+                    <?php foreach ($lama_sewa as $row_sewa) { ?>
+                     <option data-harga_sewa="<?= $row_sewa->nominal ?>"> <?= $row_sewa->lama_sewa ?> </option>
+                   <?php } ?>
                 </select>
               </div>
             </div>
-
 
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Pilih Lapangan</label>
               <div class="col-sm-10">
                 <select class="form-control" name="nama_lapangan" required>
                   <option value="<?= $row->nama_lapangan ?>">Pilihan Awal => <?= $row->nama_lapangan ?></option>
-                  <?php foreach ($data_lapangan as $row) { ?>
-                  <option value="<?= $row->nama_lapangan ?>"><?= $row->nama_lapangan ?></option>
+                  <?php foreach ($data_lapangan as $row_lap) { ?>
+                  <option value="<?= $row_lap->nama_lapangan ?>"><?= $row_lap->nama_lapangan ?></option>
                   <?php } ?>
                 </select>
               </div>
             </div>
 
             <div class="row mb-3">
+              <label for="inputText" class="col-sm-2 col-form-label">Harga Sewa</label>
+              <div class="col-sm-10">
+                <input type="text" name="harga_sewa" class="form-control" value="<?= $row->harga_sewa ?>" required>
+              </div>
+            </div>
+
+            <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Nominal DP</label>
               <div class="col-sm-10">
-                <input type="number" name="nominal_pembayaran" class="form-control" value="<?= $row->nominal_pembayaran ?>" required>
-                <p>DP minimal 50.000 Rupiah</p>
+                <input type="text" name="nominal_pembayaran" class="form-control" value="<?= $row->nominal_pembayaran ?>" required>
               </div>
             </div>
 
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Status Pembayaran</label>
               <div class="col-sm-10">
-                <select class="form-control" name="status_pembayaran" required>
-                  <option value="<?= $row->status_pembayaran ?>">Pilihan Awal => <?= $row->status_pembayaran ?></option>
-                  <option value="DP">DP</option>
-                  <option value="lunas">Lunas</option>
-                </select>
+                <input type="text" name="status_pembayaran" class="form-control" value="<?= $row->status_pembayaran ?>" required>
               </div>
             </div>
 

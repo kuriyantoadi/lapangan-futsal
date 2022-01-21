@@ -82,7 +82,7 @@
                 <select class="form-control" name="lama_main" id="lama_main" required>
                   <option data-sewa=""> Pilih </option>
                   <?php foreach ($data_lama_sewa as $row) { ?>
-                   <option data-sewa="<?= $row->nominal ?>"> <?= $row->lama_sewa ?> </option>
+                   <option data-harga_sewa="<?= $row->nominal ?>"> <?= $row->lama_sewa ?> </option>
                  <?php } ?>
                 </select>
               </div>
@@ -91,33 +91,25 @@
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Harga Sewa</label>
               <div class="col-sm-10">
-                <input type="text" name="sewa" id="harga_sewa" class="form-control" onkeyup="sum();" readonly>
+                <input type="text"  name="harga_sewa" id="harga_sewa" class="form-control" readonly>
               </div>
             </div>
 
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Nominal DP / Bayar</label>
               <div class="col-sm-10">
-                <select class="form-control" name="nominal_pembayaran" id="nominal_pembayaran" required>
-                  <option data-bayar="50000" value="50000">Rp. 50.000</option>
-                  <option data-bayar="100000" value="100000">Rp. 100.000</option>
-                  <option data-bayar="150000" value="150000">Rp. 150.000</option>
-                  <option data-bayar="200000" value="200000">Rp. 200.000</option>
-                  <option data-bayar="250000" value="250000">Rp. 250.000</option>
-                  <option data-bayar="500000" value="500000">Rp. 500.000</option>
-                  <option data-bayar="750000" value="750000">Rp. 750.000</option>
-                  <option data-bayar="1000000" value="1000000">Rp. 1.000.000</option>
+                <select class="form-control" name="nominal_pembayaran" required>
+                  <option value="50000">Rp. 50.000</option>
+                  <option value="100000">Rp. 100.000</option>
+                  <option value="150000">Rp. 150.000</option>
+                  <option value="200000">Rp. 200.000</option>
+                  <option value="250000">Rp. 250.000</option>
+                  <option value="500000">Rp. 500.000</option>
+                  <option value="750000">Rp. 750.000</option>
+                  <option value="1000000">Rp. 1.000.000</option>
                 </select>
               </div>
             </div>
-
-            <!-- <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Status Pembayaran</label>
-              <div class="col-sm-10">
-                <input type="text" name="bayar" id="harga_bayar" class="form-control" onkeyup="sum();" readonly>
-                <input type="text" name="total_bayar" id="total_bayar" class="form-control" readonly>
-              </div>
-            </div> -->
 
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Bukti Pembayaran</label>

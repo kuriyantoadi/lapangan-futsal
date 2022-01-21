@@ -150,7 +150,6 @@ class C_pelanggan extends CI_Controller {
 			$_data = array('upload_data' => $this->upload->data());
 			$id_pelanggan = $this->session->userdata('ses_id');
 
-
 			$nama_lengkap = $this->input->post('nama_lengkap');
 			$no_hp = $this->input->post('no_hp');
 			$nama_club = $this->input->post('nama_club');
@@ -159,11 +158,16 @@ class C_pelanggan extends CI_Controller {
 			$lama_main = $this->input->post('lama_main');
 			$nama_lapangan = $this->input->post('nama_lapangan');
 			$bukti_pembayaran = $this->input->post('bukti_pembayaran');
-			$status_pembayaran = $this->input->post('status_pembayaran');
-			$nominal_pembayaran = $this->input->post('nomiminal_pembyaran');
+			$harga_sewa = $this->input->post('harga_sewa');
+			$nominal_pembayaran = $this->input->post('nominal_pembayaran');
 
 			date_default_timezone_set('Asia/Jakarta');
 			$tgl_pesan = date('d-m-Y H:i:s');
+
+			$harga_sewa = preg_replace("/[^0-9]/","",$harga_sewa);
+			$status_pembayaran = $nominal_pembayaran - $harga_sewa;
+
+			echo $status_pembayaran;
 
 			$data_tambah = array(
 				'bukti_pembayaran'=> $_data['upload_data']['file_name'],
@@ -176,14 +180,13 @@ class C_pelanggan extends CI_Controller {
 				'tgl_main' => $tgl_main,
 				'lama_main' => $lama_main,
 				'nama_lapangan' => $nama_lapangan,
-				'status_pembayaran' => $status_pembayaran,
+				'harga_sewa' => $harga_sewa,
 				'nominal_pembayaran' => $nominal_pembayaran,
+				'status_pembayaran' => $status_pembayaran,
 				'status_sewa' => 'Menunggu'
 			);
 
-
 			$this->M_pelanggan->pesan_lapangan_up($data_tambah);
-
 
 			$this->session->set_flashdata('msg', '
 						<div class="alert alert-primary alert-dismissible fade show" role="alert">

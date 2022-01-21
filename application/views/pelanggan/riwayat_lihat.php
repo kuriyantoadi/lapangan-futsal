@@ -6,7 +6,7 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 align="center" class="card-title">Pesan Lapangan Tambah</h5>
+            <h5 align="center" class="card-title">Pesan Lapangan</h4>
 
             <?= $this->session->flashdata('msg') ?>
 
@@ -41,19 +41,32 @@
                 </tr>
                 <tr>
                   <td>Lama Main</td>
-                  <td><?= $row->nama_lapangan ?></td>
+                  <td><?= $row->lama_main ?></td>
                 </tr>
                 <tr>
                   <td>Nama Lapangan</td>
                   <td><?= $row->nama_lapangan ?></td>
                 </tr>
                 <tr>
-                  <td>Status Pembayaran</td>
-                  <td><?= $row->status_pembayaran ?></td>
+                  <td>Harga Sewa</td>
+                  <td><?php echo "Rp. ". number_format($row->harga_sewa, 0, ".", "."); ?></td>
                 </tr>
+
                 <tr>
                   <td>Nominal Pembayaran</td>
-                  <td><?= $row->nominal_pembayaran ?></td>
+                  <td><?php echo "Rp. ". number_format($row->nominal_pembayaran, 0, ".", "."); ?></td>
+                </tr>
+                <tr>
+                  <td>Status Pembayaran</td>
+                  <td>
+                    <?php
+                    if ($row->status_pembayaran < 0) {
+                      echo "Rp. ". number_format( $row->status_pembayaran, 0, ".", ".");
+                    }else {
+                      echo "Lunas";
+                    }
+                    ?>
+                  </td>
                 </tr>
                 <tr>
                   <td>Status Sewa</td>

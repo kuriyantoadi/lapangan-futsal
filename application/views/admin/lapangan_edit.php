@@ -27,13 +27,6 @@
               </div>
 
               <div class="row mb-3">
-                <label for="inputText" class="col-sm-2 col-form-label" required>Harga Sewa</label>
-                <div class="col-sm-10">
-                  <input type="text" name="harga_sewa" value="<?= $row->harga_sewa ?>" class="form-control" required>
-                </div>
-              </div>
-
-              <div class="row mb-3">
                 <label for="inputText" class="col-sm-2 col-form-label" required>Kondisi </label>
                 <div class="col-sm-10">
                   <select class="form-control" name="kondisi" >

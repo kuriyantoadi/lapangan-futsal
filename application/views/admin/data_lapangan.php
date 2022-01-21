@@ -72,12 +72,7 @@
                 <input type="text" class="form-control" name="nama_lapangan" value="" placeholder="">
               </div>
             </div>
-            <div class="row mb-3">
-              <label for="inputEmail" class="col-sm-2 col-form-label">Harga</label>
-              <div class="col-sm-10">
-                <input type="number" class="form-control" name="harga_sewa" value="" placeholder="">
-              </div>
-            </div>
+            
             <div class="row mb-3">
               <label for="inputEmail" class="col-sm-2 col-form-label">Kondisi</label>
               <div class="col-sm-10">

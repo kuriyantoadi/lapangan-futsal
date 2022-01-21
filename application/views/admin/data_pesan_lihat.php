@@ -71,7 +71,7 @@
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Nominal DP</label>
               <div class="col-sm-10">
-                <input type="number" name="nominal_pembayaran" class="form-control" value="<?= $row->nominal_pembayaran ?>" disabled>
+                <input type="text" name="nominal_pembayaran" class="form-control" value="<?php echo "Rp. ". number_format($row->nominal_pembayaran, 0, ".", "."); ?>" disabled>
                 <p>DP minimal 50.000 Rupiah</p>
               </div>
             </div>
@@ -79,7 +79,14 @@
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Status Pembayaran</label>
               <div class="col-sm-10">
-                <input type="text" name="nama_club" class="form-control" value="<?= $row->status_pembayaran ?>" disabled>
+                <input type="text" name="nama_club" class="form-control" value="
+                <?php
+                if ($row->status_pembayaran < 0) {
+                  echo "Rp. ". number_format( $row->status_pembayaran, 0, ".", ".");
+                }else {
+                  echo "Lunas";
+                }
+                ?>" disabled>
               </div>
             </div>
 

@@ -664,6 +664,9 @@ class C_admin extends CI_Controller {
 	public function pesan_lapangan_edit($id_sewa)
 	{
 		$data['cari_sewa'] = $this->M_admin->cari_sewa($id_sewa);
+		$data['lama_sewa'] = $this->M_admin->lama_sewa();
+		$data['data_lapangan'] = $this->M_admin->data_lapangan();
+
 
 		$this->load->view('template/header-admin');
 		$this->load->view('admin/data_pesan_edit', $data);
@@ -682,7 +685,7 @@ class C_admin extends CI_Controller {
 		$nama_lapangan = $this->input->post('nama_lapangan');
 		$bukti_pembayaran = $this->input->post('bukti_pembayaran');
 		$status_pembayaran = $this->input->post('status_pembayaran');
-		$nominal_pembayaran = $this->input->post('nomiminal_pembyaran');
+		$nominal_pembayaran = $this->input->post('nominal_pembayaran');
 
 		// date_default_timezone_set('Asia/Jakarta');
 		// $tgl_pesan = date('d-m-Y H:i:s');

@@ -43,7 +43,15 @@
                     <!-- <td><?= $row->jam_main ?></td> -->
                     <td><?= $row->tgl_main ?></td>
                     <!-- <td><?= $row->lama_main ?> Jam</td> -->
-                    <td><?= $row->status_pembayaran ?></td>
+                    <td>
+                      <?php
+                      if ($row->status_pembayaran < 0) {
+                        echo "Rp. ". number_format( $row->status_pembayaran, 0, ".", ".");
+                      }else {
+                        echo "Lunas";
+                      }
+                      ?>
+                    </td>
                     <td><?= $row->status_sewa ?></td>
 
                     <td>

@@ -28,27 +28,12 @@
 
     $('#lama_main').on('change', function(){
       // ambil data dari elemen option yang dipilih
-      const sewa = $('#lama_main option:selected').data('sewa');
-      const nominal_pembayaran = $('#nominal_pembayaran option:selected').data('sewa');
+      const harga_sewa = $('#lama_main option:selected').data('harga_sewa');
+      // const nominal_pembayaran = $('#nominal_pembayaran option:selected').data('harga_sewa');
 
-      $('[name=sewa]').val(`Rp ${sewa}`);
+      $('[name=harga_sewa]').val(`Rp. ${harga_sewa}`);
     });
 
-    $('#nominal_pembayaran').on('change', function(){
-      // ambil data dari elemen option yang dipilih
-      const bayar = $('#nominal_pembayaran option:selected').data('bayar');
-
-      $('[name=bayar]').val(`Rp ${bayar}`);
-    });
-
-    function sum() {
-      var harga_sewa = document.getElementById('harga_sewa').value;
-      var harga_bayar = document.getElementById('harga_bayar').value;
-      var result = parseInt(harga_bayar) - parseInt(harga_sewa);
-      if (!isNaN(result)) {
-        document.getElementById('total_bayar').value = result;
-      }
-    }
 
 
 </script>

@@ -845,4 +845,37 @@ class C_admin extends CI_Controller {
 
 		}
 
+		public function lama_sewa_edit($id_lama_sewa)
+		{
+			$data['cari_lama_sewa'] = $this->M_admin->cari_lama_sewa($id_lama_sewa);
+
+			$this->load->view('template/header-admin');
+			$this->load->view('admin/data_lama_sewa_edit', $data);
+			$this->load->view('template/footer');
+		}
+
+		public function lama_sewa_edit_up()
+		{
+			$id_lama_sewa = $this->input->post('id_lama_sewa');
+			$lama_sewa = $this->input->post('lama_sewa');
+			$nominal = $this->input->post('nominal');
+
+			$data_edit = array(
+				'lama_sewa' => $lama_sewa,
+				'nominal' => $nominal
+			);
+
+			$this->M_admin->lama_sewa_edit_up($id_lama_sewa, $data_edit);
+
+			$this->session->set_flashdata('msg', '
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
+							Data Berhasil Diubah
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+
+							');
+			redirect ('C_admin/data_lama_sewa');
+		}
+
+
 }

@@ -17,10 +17,6 @@
 <script src="<?= base_url() ?>assets/js/main.js"></script>
 
 <script>
-  // $('.time-picker').timepicker({
-  //       showMeridian: false
-  //   });
-
     function js_lapangan() {
       var x = document.getElementById("bl_pilih_lapangan");
       if (x.style.display === "none") {
@@ -31,22 +27,28 @@
     }
 
     $('#lama_main').on('change', function(){
-    // ambil data dari elemen option yang dipilih
-    const sewa = $('#lama_main option:selected').data('sewa');
-    const nominal_pembayaran = $('#nominal_pembayaran option:selected').data('sewa');
+      // ambil data dari elemen option yang dipilih
+      const sewa = $('#lama_main option:selected').data('sewa');
+      const nominal_pembayaran = $('#nominal_pembayaran option:selected').data('sewa');
 
-    // const discount = $('#package option:selected').data('discount');
-
-    // kalkulasi total harga
-    // const totalDiscount = (sewa * discount/100)
-    // const total = sewa - totalDiscount;
-
-    // tampilkan data ke element
-    $('[name=sewa]').val(`Rp ${sewa}`);
-    // $('[name=discount]').val(totalDiscount);
-
-    // $('#sewa').text(`Rp ${sewa}`);
+      $('[name=sewa]').val(`Rp ${sewa}`);
     });
+
+    $('#nominal_pembayaran').on('change', function(){
+      // ambil data dari elemen option yang dipilih
+      const bayar = $('#nominal_pembayaran option:selected').data('bayar');
+
+      $('[name=bayar]').val(`Rp ${bayar}`);
+    });
+
+    function sum() {
+      var harga_sewa = document.getElementById('harga_sewa').value;
+      var harga_bayar = document.getElementById('harga_bayar').value;
+      var result = parseInt(harga_bayar) - parseInt(harga_sewa);
+      if (!isNaN(result)) {
+        document.getElementById('total_bayar').value = result;
+      }
+    }
 
 
 </script>

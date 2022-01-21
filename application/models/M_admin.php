@@ -233,6 +233,20 @@ class M_admin extends CI_Model{
     $this->db->delete('tb_lama_sewa');
   }
 
+  function cari_lama_sewa($id_lama_sewa){
+    $this->db->select('*');
+    $this->db->from('tb_lama_sewa');
+    $this->db->where('tb_lama_sewa.id_lama_sewa',$id_lama_sewa);
+    $query = $this->db->get()->result();
+    return $query;
+  }
+
+  public function lama_sewa_edit_up($id_lama_sewa, $data_edit)
+  {
+    $this->db->where('id_lama_sewa', $id_lama_sewa);
+    $this->db->update('tb_lama_sewa', $data_edit);
+  }
+
 }
 
  ?>

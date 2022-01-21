@@ -124,6 +124,7 @@ class C_pelanggan extends CI_Controller {
 		$ses_id = $this->session->userdata('ses_id');
 		$data['cari_pelanggan'] = $this->M_pelanggan->cari_pelanggan($ses_id);
 		$data['data_lapangan'] = $this->M_pelanggan->data_lapangan();
+		$data['data_lama_sewa'] = $this->M_pelanggan->data_lama_sewa();
 
 
 		$this->load->view('template/header-pelanggan');

@@ -80,10 +80,10 @@
               <label for="inputText" class="col-sm-2 col-form-label">Lama Main</label>
               <div class="col-sm-10">
                 <select class="form-control" name="lama_main" id="lama_main" required>
-                  <option data-sewa="250000">1 jam</option>
-                  <option data-sewa="500000">2 jam</option>
-                  <option data-sewa="750000">3 jam</option>
-                  <option data-sewa="1000000">4 jam</option>
+                  <option data-sewa=""> Pilih </option>
+                  <?php foreach ($data_lama_sewa as $row) { ?>
+                   <option data-sewa="<?= $row->nominal ?>"> <?= $row->lama_sewa ?> </option>
+                 <?php } ?>
                 </select>
               </div>
             </div>
@@ -91,38 +91,33 @@
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Harga Sewa</label>
               <div class="col-sm-10">
-                <!-- <p><span id="sewa"></span></p> -->
-                <input type="text" name="sewa" class="form-control" readonly>
+                <input type="text" name="sewa" id="harga_sewa" class="form-control" onkeyup="sum();" readonly>
               </div>
             </div>
 
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Nominal DP / Bayar</label>
               <div class="col-sm-10">
-                <select class="form-control" name="nominal_pembayaran" required>
-                  <option data-sewa="50000" value="50000">Rp. 50.000</option>
-                  <option data-sewa="100000" value="100000">Rp. 100.000</option>
-                  <option data-sewa="150000" value="150000">Rp. 150.000</option>
-                  <option data-sewa="200000" value="200000">Rp. 200.000</option>
-                  <option data-sewa="250000" value="250000">Rp. 250.000</option>
-                  <option data-sewa="500000" value="500000">Rp. 500.000</option>
-                  <option data-sewa="750000" value="750000">Rp. 750.000</option>
-                  <option data-sewa="1000000" value="1000000">Rp. 1.000.000</option>
+                <select class="form-control" name="nominal_pembayaran" id="nominal_pembayaran" required>
+                  <option data-bayar="50000" value="50000">Rp. 50.000</option>
+                  <option data-bayar="100000" value="100000">Rp. 100.000</option>
+                  <option data-bayar="150000" value="150000">Rp. 150.000</option>
+                  <option data-bayar="200000" value="200000">Rp. 200.000</option>
+                  <option data-bayar="250000" value="250000">Rp. 250.000</option>
+                  <option data-bayar="500000" value="500000">Rp. 500.000</option>
+                  <option data-bayar="750000" value="750000">Rp. 750.000</option>
+                  <option data-bayar="1000000" value="1000000">Rp. 1.000.000</option>
                 </select>
               </div>
             </div>
 
-
-            <div class="row mb-3">
+            <!-- <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Status Pembayaran</label>
               <div class="col-sm-10">
-                <select class="form-control" name="status_pembayaran" required>
-                  <option value="">Pilihan</option>
-                  <option value="DP">DP</option>
-                  <option value="lunas">Lunas</option>
-                </select>
+                <input type="text" name="bayar" id="harga_bayar" class="form-control" onkeyup="sum();" readonly>
+                <input type="text" name="total_bayar" id="total_bayar" class="form-control" readonly>
               </div>
-            </div>
+            </div> -->
 
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Bukti Pembayaran</label>
@@ -153,7 +148,6 @@
                 <tr>
                   <th>No</th>
                   <th>Nama Lapangan</th>
-                  <th>Harga Sewa</th>
                   <th>Kondisi</th>
                   <th>File Photo</th>
                 </tr>
@@ -162,7 +156,6 @@
                   <?php $no=1; ?>
                   <td><?= $no++  ?></td>
                   <td><?= $row->nama_lapangan ?></td>
-                  <td><?= $row->harga_sewa ?></td>
                   <td><?= $row->kondisi ?></td>
                   <td>
                     <img height="300px" src="<?= base_url() ?>assets/photo_lapangan/<?= $row->photo_file ?>" alt="photo lapangan">

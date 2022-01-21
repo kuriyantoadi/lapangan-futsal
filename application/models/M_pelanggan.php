@@ -62,6 +62,12 @@ class M_pelanggan extends CI_Model{
     return $tampil;
   }
 
+  function data_lama_sewa(){
+    $this->db->order_by('lama_sewa','DASC');
+    $tampil = $this->db->get('tb_lama_sewa')->result();
+    return $tampil;
+  }
+
 }
 
  ?>

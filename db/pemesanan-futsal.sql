@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 31, 2021 at 02:48 
+-- Generation Time: Jan 21, 2022 at 07:22 
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -38,7 +38,8 @@ CREATE TABLE `tb_admin` (
 --
 
 INSERT INTO `tb_admin` (`id_admin`, `username`, `password`, `status`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
+(11, 'mint', '8b823f49ba31caa5cd88e520c2f82bdc', 'admin');
 
 -- --------------------------------------------------------
 
@@ -79,6 +80,27 @@ INSERT INTO `tb_ketentuan` (`id_ketentuan`, `isi_ketentuan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_lama_sewa`
+--
+
+CREATE TABLE `tb_lama_sewa` (
+  `id_lama_sewa` int(11) NOT NULL,
+  `lama_sewa` varchar(20) NOT NULL,
+  `nominal` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `tb_lama_sewa`
+--
+
+INSERT INTO `tb_lama_sewa` (`id_lama_sewa`, `lama_sewa`, `nominal`) VALUES
+(3, '3 Jam', 750000),
+(4, '2 Jam ', 500000),
+(5, '1 Jam ', 250000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_lapangan`
 --
 
@@ -86,7 +108,6 @@ CREATE TABLE `tb_lapangan` (
   `id_lapangan` int(11) NOT NULL,
   `nama_lapangan` varchar(100) NOT NULL,
   `kondisi` varchar(20) NOT NULL,
-  `harga_sewa` varchar(15) NOT NULL,
   `photo_file` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -94,10 +115,10 @@ CREATE TABLE `tb_lapangan` (
 -- Dumping data for table `tb_lapangan`
 --
 
-INSERT INTO `tb_lapangan` (`id_lapangan`, `nama_lapangan`, `kondisi`, `harga_sewa`, `photo_file`) VALUES
-(4, 'Lapangan 1', 'Baik', '300000', '7f9048e86e0c060e8031100100ccf381.jpeg'),
-(9, 'lapangan 3', 'Baik', '200000', 'a6366787fca91be01c75e805544e0761.jpeg'),
-(10, 'lapangan 2', 'Baik', '150000', '892ada95db3b0d2989288ec855c5bc44.jpeg');
+INSERT INTO `tb_lapangan` (`id_lapangan`, `nama_lapangan`, `kondisi`, `photo_file`) VALUES
+(4, 'Lapangan 1', 'Baik', '7f9048e86e0c060e8031100100ccf381.jpeg'),
+(9, 'Lapangan 3', 'Baik', 'a6366787fca91be01c75e805544e0761.jpeg'),
+(10, 'Lapangan 2', 'Baik', '892ada95db3b0d2989288ec855c5bc44.jpeg');
 
 -- --------------------------------------------------------
 
@@ -123,7 +144,8 @@ CREATE TABLE `tb_pelanggan` (
 
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `username`, `password`, `nama_lengkap`, `status`, `no_hp`, `email`, `alamat`, `nama_club`) VALUES
 (2, 'pelanggan', 'c4ca4238a0b923820dcc509a6f75849b', 'saya adalah pelanggan', 'aktif', '089', 'pelanggan@gmail.com', 'serang', 'Pelanggan FB'),
-(3, 'agus', 'ee11cbb19052e40b07aac0ca060c23ee', 'Agus Setiwan', 'aktif', '085123456789', 'agus@gmail.com', 'Serang', 'Cikande Bersatu FC');
+(3, 'agus', 'c4ca4238a0b923820dcc509a6f75849b', 'Agus Setiwan', 'aktif', '085123456789', 'agus@gmail.com', 'Serang', 'Cikande Bersatu FC'),
+(4, '1', 'c4ca4238a0b923820dcc509a6f75849b', '1', 'aktif', '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -141,10 +163,11 @@ CREATE TABLE `tb_sewa_lapangan` (
   `jam_main` varchar(20) NOT NULL,
   `tgl_main` varchar(20) NOT NULL,
   `lama_main` varchar(20) NOT NULL,
-  `nama_lapangan` varchar(50) NOT NULL,
-  `bukti_pembayaran` varchar(100) NOT NULL,
-  `status_pembayaran` varchar(20) NOT NULL,
+  `harga_sewa` varchar(20) NOT NULL,
   `nominal_pembayaran` varchar(100) NOT NULL,
+  `bukti_pembayaran` varchar(100) NOT NULL,
+  `nama_lapangan` varchar(50) NOT NULL,
+  `status_pembayaran` varchar(20) NOT NULL,
   `status_sewa` varchar(20) NOT NULL,
   `catatan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -153,10 +176,9 @@ CREATE TABLE `tb_sewa_lapangan` (
 -- Dumping data for table `tb_sewa_lapangan`
 --
 
-INSERT INTO `tb_sewa_lapangan` (`id_sewa`, `id_pelanggan`, `nama_lengkap`, `no_hp`, `nama_club`, `tgl_pesan`, `jam_main`, `tgl_main`, `lama_main`, `nama_lapangan`, `bukti_pembayaran`, `status_pembayaran`, `nominal_pembayaran`, `status_sewa`, `catatan`) VALUES
-(4, '3', 'user', '1', '1', '24-12-2021 08:29:26', '22:00', '2021-12-22', '3', 'Lapangan 1', 'fefcbbfcd925940359425d8d724df1c1.png', 'lunas', '', 'Selesai', 'maaf lapangan sedang ada perbaikan'),
-(5, '3', 'user', '112121', '21212', '24-12-2021 10:14:59', '19:00', '2021-12-02', '1', 'Lapangan 1', '0107301c4552fd2bc43d6a3563499275.png', 'lunas', '', 'Diterima', ''),
-(6, '3', 'user', '1', '1', '24-12-2021 10:54:13', '17:00', '2021-12-03', '1', 'Lapangan 1', '5e1fa8ecc74e60651cdf9a2aa72331c9.png', 'DP', '1000', 'Menunggu', '');
+INSERT INTO `tb_sewa_lapangan` (`id_sewa`, `id_pelanggan`, `nama_lengkap`, `no_hp`, `nama_club`, `tgl_pesan`, `jam_main`, `tgl_main`, `lama_main`, `harga_sewa`, `nominal_pembayaran`, `bukti_pembayaran`, `nama_lapangan`, `status_pembayaran`, `status_sewa`, `catatan`) VALUES
+(22, '3', 'Agus Setiwan', '085123456789', 'Cikande Bersatu FC', '21-01-2022 23:21:48', '10:00', '2022-01-21', '2 Jam', '500000', '500000', 'd5b127be8a2c8267fc060fa1668f84c0.png', 'Lapangan 1', '0', 'Menunggu', ''),
+(23, '3', 'Agus Setiwan', '085123456789', 'Cikande Bersatu FC', '21-01-2022 23:50:28', '08:00', '2022-01-05', '1 Jam', '250000', '50000', 'bde0a963b7dbd0a304024b77be020678.png', 'Lapangan 1', '-200000', 'Menunggu', '');
 
 --
 -- Indexes for dumped tables
@@ -179,6 +201,12 @@ ALTER TABLE `tb_fasilitas`
 --
 ALTER TABLE `tb_ketentuan`
   ADD PRIMARY KEY (`id_ketentuan`);
+
+--
+-- Indexes for table `tb_lama_sewa`
+--
+ALTER TABLE `tb_lama_sewa`
+  ADD PRIMARY KEY (`id_lama_sewa`);
 
 --
 -- Indexes for table `tb_lapangan`
@@ -206,7 +234,7 @@ ALTER TABLE `tb_sewa_lapangan`
 -- AUTO_INCREMENT for table `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tb_fasilitas`
 --
@@ -218,20 +246,25 @@ ALTER TABLE `tb_fasilitas`
 ALTER TABLE `tb_ketentuan`
   MODIFY `id_ketentuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `tb_lama_sewa`
+--
+ALTER TABLE `tb_lama_sewa`
+  MODIFY `id_lama_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `tb_lapangan`
 --
 ALTER TABLE `tb_lapangan`
-  MODIFY `id_lapangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_lapangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tb_sewa_lapangan`
 --
 ALTER TABLE `tb_sewa_lapangan`
-  MODIFY `id_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -39,7 +39,7 @@
                     <td><?= $row->nama_lapangan ?></td>
                     <td><?= $row->jam_main ?></td>
                     <td><?= $row->tgl_main ?></td>
-                    <td><?= $row->lama_main ?> Jam</td>
+                    <td><?= $row->lama_main ?></td>
                     <td>
                       <?php
                       echo "Rp. ". number_format( $row->nominal_pembayaran, 0, ".", "."). " (DP)";
@@ -48,7 +48,9 @@
                       <?php
                       if ($row->status_pembayaran < 0) {
                         echo "Rp. ". number_format( $row->status_pembayaran, 0, ".", ".");
-                      }else {
+                      }elseif ($row->status_pembayaran > 0 ) {
+                        echo "Lunas & Uang Kembali <br>". "Rp. ". number_format( $row->status_pembayaran, 0, ".", ".");
+                      }else{
                         echo "Lunas";
                       }
                       ?>

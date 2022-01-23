@@ -83,9 +83,7 @@
                 <?php
                 if ($row->status_pembayaran < 0) {
                   echo "Rp. ". number_format( $row->status_pembayaran, 0, ".", ".");
-                }elseif ($row->status_pembayaran > 0 ) {
-                  echo "Lunas dan Uang Kembali ". "Rp. ". number_format( $row->status_pembayaran, 0, ".", ".");
-                }else{
+                }else {
                   echo "Lunas";
                 }
                 ?>" disabled>

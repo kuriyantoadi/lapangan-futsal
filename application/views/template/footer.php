@@ -38,6 +38,17 @@
 
 </script>
 
+<!-- JS Rekap Data -->
+<script src="<?php echo base_url('assets/print/js/bootstrap.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/libraries/bootstrap-datepicker/js/bootstrap-datepicker.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/print/js/custom.js') ?>"></script>
+
+<script>
+$(document).ready(function(){
+    setDateRangePicker(".tgl_awal", ".tgl_akhir")
+})
+</script>
+
 </body>
 
 </html>

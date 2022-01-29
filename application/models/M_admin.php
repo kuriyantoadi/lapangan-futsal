@@ -247,6 +247,19 @@ class M_admin extends CI_Model{
     $this->db->update('tb_lama_sewa', $data_edit);
   }
 
+  // rekap Sewa
+  public function tampil_rekap(){
+    return $this->db->get('tb_sewa_lapangan')->result(); // Tampilkan semua data transaksi
+  }
+
+  public function tampil_rekap_tanggal($tgl_awal, $tgl_akhir){
+    $tgl_awal = $this->db->escape($tgl_awal);
+    $tgl_akhir = $this->db->escape($tgl_akhir);
+
+    $this->db->where('tgl_pesan BETWEEN '.$tgl_awal.' AND '.$tgl_akhir); // Tambahkan where tanggal nya
+    return $this->db->get('tb_sewa_lapangan')->result();// Tampilkan data transaksi sesuai tanggal yang diinput oleh user pada filter
+  }
+
 }
 
  ?>

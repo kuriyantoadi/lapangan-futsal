@@ -880,5 +880,61 @@ class C_admin extends CI_Controller {
 			redirect ('C_admin/data_lama_sewa');
 		}
 
+		public function rekap_sewa(){
+        $tgl_awal = $this->input->get('tgl_awal'); // Ambil data tgl_awal sesuai input (kalau tidak ada set kosong)
+        $tgl_akhir = $this->input->get('tgl_akhir'); // Ambil data tgl_awal sesuai input (kalau tidak ada set kosong)
+
+				$tgl_awal = date('d-m-Y', strtotime($tgl_awal)); // Ubah format tanggal jadi dd-mm-yyyy
+				$tgl_akhir = date('d-m-Y', strtotime($tgl_akhir)); // Ubah format tanggal jadi dd-mm-yyyy
+
+
+        if(empty($tgl_awal) or empty($tgl_akhir)){ // Cek jika tgl_awal atau tgl_akhir kosong, maka :
+            $transaksi = $this->M_admin->tampil_rekap();  // Panggil fungsi view_all yang ada di M_admin
+            $url_cetak = 'C_admin/rekap_sewa_cetak'; // Set URL untuk Cetak PDF
+            $label = 'Semua Data Transaksi'; // Set Label
+        }else{ // Jika terisi
+            $transaksi = $this->M_admin->tampil_rekap_tanggal($tgl_awal, $tgl_akhir);  // Panggil fungsi view_by_date yang ada di M_admin
+            $url_cetak = 'C_admin/rekap_sewa_cetak?tgl_awal='.$tgl_awal.'&tgl_akhir='.$tgl_akhir; // Set URL untuk Cetak PDF
+            $label = 'Periode Tanggal '.$tgl_awal.' s/d '.$tgl_akhir; // Set Label
+        }
+
+        $data['rekap_sewa'] = $transaksi;
+        // $data['url_cetak'] = base_url('index.php/'.$url_cetak);
+				$data['url_cetak'] = base_url($url_cetak);
+
+        $data['label'] = $label;
+
+				$this->load->view('template/header-admin');
+				$this->load->view('admin/rekap_sewa', $data);
+				$this->load->view('template/footer');
+    }
+
+		public function rekap_sewa_cetak(){
+			$tgl_awal = $this->input->get('tgl_awal'); // Ambil data tgl_awal sesuai input (kalau tidak ada set kosong)
+			$tgl_akhir = $this->input->get('tgl_akhir'); // Ambil data tgl_awal sesuai input (kalau tidak ada set kosong)
+
+			if(empty($tgl_awal) or empty($tgl_akhir)){ // Cek jika tgl_awal atau tgl_akhir kosong, maka :
+					$transaksi = $this->M_admin->tampil_rekap();  // Panggil fungsi view_all yang ada di M_admin
+					$label = 'Semua Data Transaksi';
+			}else{ // Jika terisi
+					$transaksi = $this->M_admin->tampil_rekap_tanggal($tgl_awal, $tgl_akhir);  // Panggil fungsi view_by_date yang ada di M_admin
+					$label = 'Periode Tanggal '.$tgl_awal.' s/d '.$tgl_akhir;
+			}
+
+			$data['label'] = $label;
+			$data['rekap_sewa'] = $transaksi;
+
+			ob_start();
+			$this->load->view('admin/rekap_sewa_cetak', $data);
+			$html = ob_get_contents();
+			ob_end_clean();
+
+			require './assets/libraries/html2pdf/autoload.php'; // Load plugin html2pdfnya
+
+			$pdf = new Spipu\Html2Pdf\Html2Pdf('L','A4','en');  // Settingan PDFnya
+			$pdf->WriteHTML($html);
+			$pdf->Output('Data Rekap Sewa Blafut Futsal.pdf', 'D');
+		}
+
 
 }

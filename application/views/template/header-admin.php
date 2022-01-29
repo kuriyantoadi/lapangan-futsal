@@ -40,6 +40,11 @@ $ses_id = $this->session->userdata('ses_id');
   <!-- Template Main CSS File -->
   <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
 
+  <!-- template transkasi -->
+  <!-- <link href="<?php echo base_url('assets/print/css/bootstrap.min.css') ?>" rel="stylesheet"> -->
+  <link href="<?php echo base_url('assets/libraries/bootstrap-datepicker/css/bootstrap-datepicker.min.css') ?>" rel="stylesheet">
+  <script src="<?php echo base_url('assets/print/js/jquery.min.js') ?>"></script>
+
 </head>
 
 <body>
@@ -123,6 +128,12 @@ $ses_id = $this->session->userdata('ses_id');
         </a>
       </li><!-- End Dashboard Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= base_url() ?>C_admin/rekap_sewa">
+          <i class="bi bi-calendar-check"></i>
+          <span>Data Rekap Sewa Lapangan</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="<?= base_url() ?>C_admin/data_lapangan">
@@ -166,6 +177,7 @@ $ses_id = $this->session->userdata('ses_id');
           <span>Ketentuan</span>
         </a>
       </li><!-- End Dashboard Nav -->
+
     </ul>
 
   </aside><!-- End Sidebar-->

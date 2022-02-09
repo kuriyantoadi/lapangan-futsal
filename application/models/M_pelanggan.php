@@ -68,6 +68,11 @@ class M_pelanggan extends CI_Model{
     return $tampil;
   }
 
+  function pesanan_berlangsung(){
+    $tampil = $this->db->get('tb_sewa_lapangan')->result();
+    return $tampil;
+  }
+
 }
 
  ?>

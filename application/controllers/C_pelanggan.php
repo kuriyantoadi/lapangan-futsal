@@ -237,4 +237,13 @@ class C_pelanggan extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function pesanan_berlangsung()
+	{
+		$data['tampil'] = $this->M_pelanggan->pesanan_berlangsung();
+
+		$this->load->view('template/header-pelanggan');
+		$this->load->view('pelanggan/pesanan_berlangsung', $data);
+		$this->load->view('template/footer');
+	}
+
 }
